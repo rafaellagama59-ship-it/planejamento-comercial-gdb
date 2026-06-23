@@ -8,3 +8,35 @@ select,input[type=number]{border:1px solid var(--line);border-radius:8px;padding
 .formula-box,#syncStatus{background:#eef5ff;border:1px solid #aac4ff;border-radius:10px;padding:14px;margin-top:16px;line-height:1.5}.side .inst-card{border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;display:grid;grid-template-columns:50px 1fr;gap:4px 12px}.inst-card div{grid-row:1/4;background:linear-gradient(135deg,var(--navy2),var(--accent));color:#fff;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:24px}.inst-card span{color:var(--muted)}.inst-card strong{color:var(--navy)}.muted{color:var(--muted)}.hint{color:var(--muted);font-size:13px;margin-bottom:0}
 body.theme-carnaval{--navy:#401A79;--navy2:#BB197C;--accent:#FFB000;--bg:#FFF8F0;--pattern:"🎭 🎉 ✨ 🎭 🎉 ✨"}body.theme-pascoa{--navy:#58417D;--navy2:#9F79BD;--accent:#D49A89;--bg:#FFF8F1;--pattern:"🐰 🥕 🥚 🐰 🥕 🥚"}body.theme-maes{--navy:#7A294C;--navy2:#C1527E;--accent:#E9A1B6;--bg:#FFF5F8;--pattern:"🌷 💕 🌸 🌷 💕 🌸"}body.theme-saojoao{--navy:#1F4E3D;--navy2:#A6401D;--accent:#F4A62A;--bg:#FFF8E8;--pattern:"🌽 🔥 🎇 🌽 🔥 🎇"}body.theme-pais{--navy:#1E3A5F;--navy2:#496B91;--accent:#C9903F;--bg:#F4F7FB;--pattern:"👔 ⭐ 💙 👔 ⭐ 💙"}body.theme-ferias{--navy:#006B7A;--navy2:#00A4B8;--accent:#F2B84B;--bg:#F0FBFF;--pattern:"🏖️ ☀️ 🌊 🏖️ ☀️ 🌊"}body.theme-black{--navy:#111;--navy2:#333;--accent:#E8A33D;--bg:#F3F3F3;--pattern:"🛒 🖤 ⚡ 🛒 🖤 ⚡"}body.theme-natal{--navy:#0E5135;--navy2:#9B1C26;--accent:#D9B35F;--bg:#FFF9F2;--pattern:"🎄 🎁 ❄️ 🎄 🎁 ❄️"}
 @media(max-width:1100px){.sidebar{display:none}main{margin-left:0}.cards{grid-template-columns:repeat(2,1fr)}.main-grid{grid-template-columns:1fr}.top{flex-direction:column}}@media print{.sidebar,.themes,.top-actions,#addAction{display:none}main{margin:0}.panel,.cards article{box-shadow:none}}
+
+
+/* Agendamento de Visita UNDB */
+.visit-link{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:10px;
+  padding:9px 12px;
+  text-decoration:none;
+  font-weight:900;
+}
+.visit-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.visit-card{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 8px 20px rgba(8,40,94,.05);
+}
+.visit-card h3{margin:0 0 10px;color:var(--navy)}
+.visit-card p,.visit-card li{color:var(--text);line-height:1.5}
+.visit-card [contenteditable=true]:focus,.visit-panel [contenteditable=true]:focus{
+  outline:2px dashed var(--amber);
+  background:#fff7e6;
+  border-radius:8px;
+}
+.visit-actions{display:flex;justify-content:flex-end;margin-top:14px}
+@media(max-width:900px){.visit-grid{grid-template-columns:1fr}}

@@ -12,6 +12,7 @@
     <a href="#calendario" class="nav active">📅<b>Calendário</b></a>
     <a href="#metas" class="nav">🎯<b>Metas</b></a>
     <a href="#sheets" class="nav">🔄<b>Sheets</b></a>
+    <a href="#visitas" class="nav">🏫<b>Visitas UNDB</b></a>
     <a href="#config" class="nav">⚙️<b>Config</b></a>
     <div class="tip">💡<br>Edite direto na página. As alterações ficam salvas neste navegador.</div>
   </aside>
@@ -106,6 +107,51 @@
       <p class="muted">Para sincronizar por instituição, use no resumo as colunas: Mês, Dias, Total Leads, Leads UNDB, Leads DB, Leads Pós, Meta.</p>
       <div id="syncStatus">Aguardando sincronização...</div>
     </section>
+
+
+    <section class="panel visit-panel" id="visitas">
+      <div class="panel-title">
+        <h2>🏫 Agendamento de Visita UNDB</h2>
+        <a class="visit-link" href="https://undb.edu.br/agende-uma-visita/" target="_blank" rel="noopener">Abrir página ↗</a>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Objetivo</h3>
+          <p contenteditable="true" data-visit-field="objetivo">Além do Giro das Profissões, escolas que desejam visitar a UNDB fora do projeto anual podem solicitar o agendamento pelo site oficial.</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>Fluxo de atendimento</h3>
+          <ol>
+            <li contenteditable="true" data-visit-field="fluxo1">A escola acessa a página de agendamento e registra o interesse.</li>
+            <li contenteditable="true" data-visit-field="fluxo2">A solicitação chega diretamente no e-mail da Thayana.</li>
+            <li contenteditable="true" data-visit-field="fluxo3">Thayana entra em contato com a escola para alinhar data, horário e quantidade de alunos.</li>
+            <li contenteditable="true" data-visit-field="fluxo4">Após o alinhamento, Thayana valida a disponibilidade com a coordenação do curso envolvido.</li>
+          </ol>
+        </div>
+
+        <div class="visit-card">
+          <h3>Responsável pelo primeiro contato</h3>
+          <p contenteditable="true" data-visit-field="responsavel"><b>Thayana</b> — recebe o interesse, retorna para a escola e conduz o alinhamento inicial.</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>Próximo passo interno</h3>
+          <p contenteditable="true" data-visit-field="proximo">Organizar o fluxo de acompanhamento das escolas interessadas para registrar visitas solicitadas, visitas confirmadas e cursos envolvidos.</p>
+        </div>
+      </div>
+
+      <div class="visit-actions">
+        <button type="button" id="copyVisitSummary">📋 Copiar resumo</button>
+      </div>
+
+      <div class="formula-box">
+        <b>Resumo rápido:</b><br>
+        Escolas interessadas em visitar a UNDB fora do Giro das Profissões poderão solicitar o agendamento pelo site. O interesse será direcionado para a Thayana, que fará contato com a escola e alinhará a visita com a coordenação do curso.
+      </div>
+    </section>
+
 
     <section class="panel" id="config">
       <h2>⚙️ Observações</h2>
