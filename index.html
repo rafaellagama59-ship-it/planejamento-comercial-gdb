@@ -1,174 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDB | Calendário Comercial</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GDB Store — Jornada Completa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#140b2f;--muted:#70677e;--line:#eee6f4;--soft:#faf6ff;--pink:#f20f70;--purple:#6923d0;--blue:#25a8e0;--yellow:#ffbd2e;--shadow:0 22px 70px rgba(32,13,72,.14);--radius:28px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff 0,#fff 52%,#fbf8ff 100%)}button,a{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.topbar-inner{max-width:1280px;margin:auto;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:16px 28px}.brand{display:flex;align-items:center;gap:10px}.brand-mark{font-size:32px;font-weight:950;letter-spacing:-2px;background:linear-gradient(90deg,var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}.brand small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}.search{height:52px;border:1px solid #dfd3ec;border-radius:999px;display:flex;align-items:center;gap:10px;padding:0 18px;max-width:560px;background:#fff;box-shadow:0 6px 20px rgba(60,30,104,.05)}.search input{border:0;outline:0;width:100%;font-size:15px}.nav-actions{display:flex;align-items:center;gap:10px}.nav-actions a{font-weight:800;font-size:14px;color:var(--muted)}.pill-btn{border:1px solid #e7dced;background:#fff;border-radius:999px;padding:11px 14px;font-weight:900;display:inline-flex;gap:7px;align-items:center}.pill-btn b{background:var(--pink);color:#fff;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px}.hamb{display:none}.menu-row{border-top:1px solid var(--line)}.menu-row-inner{max-width:1280px;margin:auto;padding:10px 28px;display:flex;gap:14px;align-items:center;overflow:auto}.menu-row a,.menu-row button{white-space:nowrap;border:0;background:transparent;border-radius:999px;padding:10px 14px;font-weight:800;color:#3c3151}.menu-row button.active,.menu-row a:hover{background:var(--soft);color:var(--pink)}.hero{max-width:1280px;margin:30px auto 0;padding:0 28px}.carousel{position:relative;overflow:hidden;border-radius:36px;box-shadow:var(--shadow);min-height:410px;background:#eee}.slide{position:absolute;inset:0;display:grid;grid-template-columns:1.04fr .96fr;opacity:0;pointer-events:none;transition:.45s ease;min-height:410px}.slide.active{opacity:1;pointer-events:auto}.slide-copy{padding:58px;color:#fff;display:flex;flex-direction:column;justify-content:center}.slide h1{font-size:58px;line-height:.98;margin:10px 0 18px;letter-spacing:-2.4px}.slide p{font-size:18px;line-height:1.55;max-width:590px}.tag{display:inline-flex;width:max-content;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.slide-actions{display:flex;gap:12px;margin-top:24px}.primary,.secondary,.outline{border:0;border-radius:16px;padding:14px 18px;font-weight:950}.primary{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;box-shadow:0 16px 30px rgba(242,15,112,.22)}.secondary{background:#fff;color:var(--pink)}.outline{background:#fff;color:var(--pink);border:1px solid #ffd1e3}.slide-art{position:relative;overflow:hidden}.slide-art:before{content:"";position:absolute;inset:32px;border-radius:34px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}.fake-poster{position:absolute;inset:62px 58px 40px 0;border-radius:34px;background:rgba(255,255,255,.95);box-shadow:0 24px 60px rgba(0,0,0,.16);transform:rotate(-2deg);display:grid;place-items:center;text-align:center;padding:34px}.fake-poster strong{font-size:48px;line-height:.95;letter-spacing:-2px}.fake-poster span{margin-top:18px;display:inline-flex;background:var(--ink);color:#fff;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:900}.g1{background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.24),transparent 30%),linear-gradient(120deg,#ff0c68,#7d22de)}.g2{background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.25),transparent 32%),linear-gradient(120deg,#ffb52b,#ff4f7e 52%,#7d22de)}.g3{background:radial-gradient(circle at 75% 20%,rgba(255,255,255,.24),transparent 30%),linear-gradient(120deg,#21124e,#7026dc 45%,#f20f70)}.g4{background:radial-gradient(circle at 72% 18%,rgba(255,255,255,.25),transparent 31%),linear-gradient(120deg,#20a4df,#7d22de 55%,#f20f70)}.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;border:0;border-radius:50%;width:48px;height:48px;background:#fff;color:var(--pink);font-size:34px;box-shadow:var(--shadow)}.arrow.prev{left:18px}.arrow.next{right:18px}.dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px}.dots button{width:10px;height:10px;border:0;border-radius:999px;background:rgba(255,255,255,.55)}.dots button.active{width:30px;background:#fff}.quick{max-width:1280px;margin:22px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.quick-card{border:1px solid var(--line);background:#fff;border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(40,20,80,.06)}.quick-card strong{display:block;font-size:22px}.quick-card span{color:var(--muted);font-size:14px}.section{max-width:1280px;margin:58px auto 0;padding:0 28px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:22px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--pink);margin:0 0 8px}.section h2{font-size:34px;letter-spacing:-1.2px;margin:0}.hint{max-width:620px;color:var(--muted);line-height:1.55}.inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.inst-card{border:1px solid var(--line);background:#fff;border-radius:28px;padding:24px;box-shadow:0 12px 40px rgba(40,20,80,.06);min-height:210px;position:relative;overflow:hidden}.inst-card:after{content:"";position:absolute;right:-35px;bottom:-55px;width:170px;height:170px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));opacity:.14}.inst-card h3{font-size:28px;margin:8px 0;letter-spacing:-1px}.inst-card p{color:var(--muted);line-height:1.5}.inst-card button{margin-top:8px}.category-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.cat{border:1px solid var(--line);background:#fff;border-radius:24px;min-height:142px;padding:22px 14px;text-align:center;box-shadow:0 10px 28px rgba(40,20,80,.05)}.cat i{font-style:normal;font-size:32px}.cat strong{display:block;margin-top:10px;font-size:16px}.cat span{display:block;color:var(--muted);font-size:13px;margin-top:5px}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 16px;font-weight:900}.chip.active{background:var(--ink);color:#fff}.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.product{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 14px 40px rgba(40,20,80,.07);transition:.2s}.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.photo{height:190px;position:relative;color:#fff;display:flex;align-items:flex-end;padding:18px;font-weight:950;font-size:24px;line-height:1.05;letter-spacing:-.8px}.photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(0,0,0,.5))}.photo span{position:relative;z-index:1}.photo .badge{position:absolute;top:14px;left:14px;z-index:2;background:#fff;color:var(--pink);font-size:11px;border-radius:999px;padding:7px 10px;letter-spacing:.06em;text-transform:uppercase}.heart{position:absolute;top:14px;right:14px;z-index:2;border:0;border-radius:50%;width:40px;height:40px;background:rgba(255,255,255,.92);font-size:20px}.heart.active{background:var(--pink);color:#fff}.p-undb{background:linear-gradient(135deg,#f20f70,#6923d0)}.p-db{background:linear-gradient(135deg,#ffbd2e,#25a8e0)}.p-pos{background:linear-gradient(135deg,#140b2f,#6923d0 52%,#f20f70)}.body{padding:18px}.body h3{font-size:19px;line-height:1.26;margin:0 0 10px}.meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:13px;margin-bottom:12px}.price{font-size:22px;font-weight:950;margin:12px 0}.product-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.add{border:0;border-radius:14px;background:var(--pink);color:#fff;padding:12px;font-weight:950}.details{border:1px solid #ffd1e3;border-radius:14px;background:#fff;color:var(--pink);padding:12px;font-weight:950}.calendar-wrap{display:grid;grid-template-columns:1.4fr .8fr;gap:22px}.panel{border:1px solid var(--line);background:#fff;border-radius:30px;padding:26px;box-shadow:var(--shadow)}.event{display:grid;grid-template-columns:78px 1fr auto;gap:18px;align-items:center;border-top:1px solid var(--line);padding:18px 0}.event:first-child{border-top:0}.date{background:var(--soft);border-radius:18px;text-align:center;padding:10px;color:var(--pink);font-weight:950}.date b{display:block;font-size:28px}.event h3{margin:0 0 5px}.event p{margin:0;color:var(--muted);font-size:14px}.past-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:18px}.past{height:265px;border-radius:28px;overflow:hidden;position:relative;color:#fff;padding:22px;display:flex;align-items:flex-end;box-shadow:var(--shadow)}.past:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(0,0,0,.55))}.past strong{position:relative;font-size:23px;line-height:1.1;letter-spacing:-.7px}.past1{background:linear-gradient(135deg,#ffbd2e,#25a8e0)}.past2{background:linear-gradient(135deg,#f20f70,#6923d0)}.past3{background:linear-gradient(135deg,#ff6d3d,#ffbd2e)}.past4{background:linear-gradient(135deg,#140b2f,#6923d0)}.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 10px 28px rgba(40,20,80,.05)}.step b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff}.step strong{display:block;margin:12px 0 6px}.step span{color:var(--muted);font-size:14px;line-height:1.45}.footer-cta{max-width:1280px;margin:58px auto 80px;padding:0 28px}.cta{border-radius:34px;background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:28px;box-shadow:var(--shadow)}.cta h2{font-size:36px;margin:0 0 10px;letter-spacing:-1.2px}.cta p{margin:0;line-height:1.5}.drawer,.modal{position:fixed;inset:0;z-index:100;background:rgba(20,11,47,.52);display:none}.drawer.open,.modal.open{display:block}.drawer-panel{position:absolute;right:0;top:0;height:100%;width:min(480px,92vw);background:#fff;padding:28px;overflow:auto;box-shadow:-20px 0 70px rgba(0,0,0,.24)}.close{position:absolute;right:18px;top:16px;border:0;background:#f4ecfb;border-radius:50%;width:38px;height:38px;font-size:22px}.drawer-list{display:grid;gap:14px;margin:24px 0}.mini{display:grid;grid-template-columns:66px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:10px}.mini-thumb{width:66px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--purple))}.mini h4{margin:0;font-size:15px}.mini p{margin:4px 0 0;color:var(--muted);font-size:13px}.remove{border:0;background:transparent;color:var(--pink);font-weight:950}.total{border-top:1px solid var(--line);padding:18px 0;display:flex;justify-content:space-between;font-size:20px}.modal-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,92vw);max-height:90vh;overflow:auto;background:#fff;border-radius:30px;padding:30px;box-shadow:var(--shadow)}.modal-card.small{width:min(440px,92vw)}label{display:grid;gap:7px;margin:14px 0;font-weight:800}input,select{border:1px solid var(--line);border-radius:15px;padding:13px;outline:0}.detail{display:grid;grid-template-columns:1fr 1fr;gap:26px}.detail-img{min-height:360px;border-radius:26px;color:#fff;padding:24px;display:flex;align-items:flex-end;font-size:42px;line-height:.95;font-weight:950;letter-spacing:-1.5px}.detail h2{font-size:36px;margin:0 0 10px;letter-spacing:-1px}.detail p{color:var(--muted);line-height:1.6}.benefits{display:grid;gap:10px;margin:18px 0}.benefits span{background:var(--soft);border-radius:14px;padding:12px;font-weight:800}.checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:200;background:var(--ink);color:#fff;border-radius:999px;padding:14px 20px;font-weight:900;opacity:0;transition:.2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.empty{border:1px dashed var(--line);border-radius:18px;padding:24px;text-align:center;color:var(--muted)}@media(max-width:1050px){.topbar-inner{grid-template-columns:1fr auto}.search{grid-column:1/3;max-width:none}.nav-actions a{display:none}.slide{grid-template-columns:1fr}.slide-art{display:none}.quick,.inst-grid,.product-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:repeat(3,1fr)}.calendar-wrap{grid-template-columns:1fr}.past-grid{grid-template-columns:1fr 1fr}.journey{grid-template-columns:repeat(2,1fr)}.detail{grid-template-columns:1fr}}@media(max-width:650px){.topbar-inner,.menu-row-inner,.hero,.section,.footer-cta{padding-left:16px;padding-right:16px}.nav-actions .pill-btn span{display:none}.carousel,.slide{min-height:500px}.slide-copy{padding:42px 28px}.slide h1{font-size:38px}.quick,.inst-grid,.product-grid,.category-grid,.past-grid,.journey{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.product-actions,.checkout-grid{grid-template-columns:1fr}.event{grid-template-columns:64px 1fr}.event button{grid-column:1/3}.cta{flex-direction:column;align-items:flex-start}.arrow{display:none}}
+</style>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="logo">GDB<span>Inteligência Comercial</span></div>
-    <a href="#calendario" class="nav active">📅<b>Calendário</b></a>
-    <a href="#metas" class="nav">🎯<b>Metas</b></a>
-    <a href="#sheets" class="nav">🔄<b>Sheets</b></a>
-    <a href="#visitas-undb" class="nav">🏫<b>Visitas UNDB</b></a>
-    <a href="#config" class="nav">⚙️<b>Config</b></a>
-    <div class="tip">💡<br>Edite direto na página. As alterações ficam salvas neste navegador.</div>
-  </aside>
-
-  <main>
-    <header class="top">
-      <div>
-        <h1>Calendário Comercial – Ações Externas e Internas</h1>
-        <p>Acompanhe ações, instituições envolvidas e leads por unidade.</p>
-      </div>
-      <div class="top-actions">
-        <button class="year active" data-year="2026">2026</button>
-        <button class="year" data-year="2027">2027</button>
-        <button id="syncBtn">🔄 Sincronizar Sheets</button>
-        <button id="backupBtn">⬇ Backup</button>
-        <button id="restoreBtn">⬆ Restaurar</button>
-      </div>
-    </header>
-
-    <section class="themes">
-      <button class="theme active" data-theme="padrao">🏠 Padrão</button>
-      <button class="theme" data-theme="carnaval">🎭 Carnaval</button>
-      <button class="theme" data-theme="pascoa">🐰 Páscoa</button>
-      <button class="theme" data-theme="maes">🌷 Dia das Mães</button>
-      <button class="theme" data-theme="saojoao">🌽 São João</button>
-      <button class="theme" data-theme="pais">👔 Dia dos Pais</button>
-      <button class="theme" data-theme="ferias">🏖️ Férias</button>
-      <button class="theme" data-theme="black">🛒 Black Friday</button>
-      <button class="theme" data-theme="natal">🎄 Natal</button>
-    </section>
-
-    <section class="cards">
-      <article><span>📅</span><strong id="totalActions">0</strong><small>Total de Ações</small></article>
-      <article><span>📊</span><strong id="totalAllLeads">0</strong><small>Total de Leads</small></article>
-      <article><span>🎓</span><strong id="totalUndbLeads">0</strong><small>Leads UNDB</small></article>
-      <article><span>🎒</span><strong id="totalDbLeads">0</strong><small>Leads Dom Bosco</small></article>
-      <article><span>📚</span><strong id="totalPosLeads">0</strong><small>Leads Pós-UNDB</small></article>
-    </section>
-
-    <section class="panel" id="calendario">
-      <div class="panel-title">
-        <h2>Calendário de Ações <span id="calendarYear">2026</span></h2>
-        <button id="addAction">+ Nova ação</button>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Período</th>
-              <th>Instituições</th>
-              <th>Tema</th>
-              <th>Descrição</th>
-              <th>Canais</th>
-              <th>Responsável</th>
-              <th>Status</th>
-              <th>Total Leads</th>
-              <th>Leads UNDB</th>
-              <th>Leads DB</th>
-              <th>Leads Pós</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="calendarBody"></tbody>
-        </table>
-      </div>
-      <p class="hint">Campos editáveis: instituições, tema, descrição, canais, responsável, status e leads.</p>
-    </section>
-
-    <section class="main-grid" id="metas">
-      <div class="panel">
-        <div class="panel-title formula">
-          <h2>🎯 Meta e Leads por Período</h2>
-          <span>Desvio = Total de Leads - Meta</span>
-        </div>
-        <div id="monthlyGoals"></div>
-        <div class="formula-box">
-          <b>Como interpretar:</b><br>
-          O total de leads mostra o volume geral. As colunas UNDB, Dom Bosco e Pós-UNDB mostram a distribuição por instituição.
-        </div>
-      </div>
-
-      <aside class="panel side">
-        <h2>📊 Resumo por Instituição</h2>
-        <div class="inst-card"><div>🎓</div><b>UNDB</b><span id="undbCount">0 ações</span><strong id="undbLeadAside">0 leads</strong></div>
-        <div class="inst-card"><div>🎒</div><b>Dom Bosco</b><span id="dbCount">0 ações</span><strong id="dbLeadAside">0 leads</strong></div>
-        <div class="inst-card"><div>📚</div><b>Pós-UNDB</b><span id="posCount">0 ações</span><strong id="posLeadAside">0 leads</strong></div>
-      </aside>
-    </section>
-
-    <section class="panel" id="sheets">
-      <h2>🔄 Google Sheets</h2>
-      <p class="muted">Para sincronizar por instituição, use no resumo as colunas: Mês, Dias, Total Leads, Leads UNDB, Leads DB, Leads Pós, Meta.</p>
-      <div id="syncStatus">Aguardando sincronização...</div>
-    </section>
-
-
-    <section class="panel visit-panel" id="visitas-undb">
-      <div class="panel-title">
-        <h2>🏫 Agendamento de Visita UNDB</h2>
-        <a class="visit-link" href="https://undb.edu.br/agende-uma-visita/" target="_blank" rel="noopener">Abrir página ↗</a>
-      </div>
-
-      <div class="visit-highlight">
-        <strong>Objetivo da aba:</strong>
-        centralizar o fluxo de escolas que desejam visitar a UNDB fora do projeto anual Giro das Profissões.
-      </div>
-
-      <div class="visit-grid">
-        <div class="visit-card">
-          <h3>📌 Contexto</h3>
-          <p contenteditable="true" data-visit-field="contexto">
-            Além do projeto anual Giro das Profissões, as escolas que desejam realizar uma visita à UNDB por fora do calendário oficial poderão solicitar o agendamento pelo site.
-          </p>
-        </div>
-
-        <div class="visit-card">
-          <h3>🔗 Página de agendamento</h3>
-          <p>
-            Link oficial:
-            <a href="https://undb.edu.br/agende-uma-visita/" target="_blank" rel="noopener">https://undb.edu.br/agende-uma-visita/</a>
-          </p>
-        </div>
-
-        <div class="visit-card">
-          <h3>👤 Responsável pelo contato</h3>
-          <p contenteditable="true" data-visit-field="responsavel">
-            Thayana receberá o interesse por e-mail e fará o primeiro contato com a escola para alinhar a visita.
-          </p>
-        </div>
-
-        <div class="visit-card">
-          <h3>✅ Fluxo operacional</h3>
-          <ol>
-            <li contenteditable="true" data-visit-field="fluxo1">A escola acessa a página e registra o interesse.</li>
-            <li contenteditable="true" data-visit-field="fluxo2">A solicitação é enviada para o e-mail da Thayana.</li>
-            <li contenteditable="true" data-visit-field="fluxo3">Thayana entra em contato com a escola para alinhar data, horário, curso de interesse e quantidade de alunos.</li>
-            <li contenteditable="true" data-visit-field="fluxo4">Após o alinhamento, Thayana valida a agenda com a coordenação do curso.</li>
-            <li contenteditable="true" data-visit-field="fluxo5">Com a confirmação, a visita é registrada no calendário comercial.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="visit-actions">
-        <button type="button" id="copyVisitSummary">📋 Copiar resumo</button>
-      </div>
-    </section>
-
-
-    <section class="panel" id="config">
-      <h2>⚙️ Observações</h2>
-      <p contenteditable="true" id="note">Todas as ações externas e internas devem ser alinhadas previamente com o Marketing para garantir prazo de criação, organização de materiais, aprovação de verba, produção de brindes e estrutura de divulgação.</p>
-    </section>
-
-    <input type="file" id="restoreFile" accept="application/json" hidden />
-  </main>
-
-  <script src="script.js"></script>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#" data-home><span class="brand-mark">GDB</span><span><b>Store</b><small>Marketplace</small></span></a>
+    <form class="search" id="searchForm"><span>⌕</span><input id="searchInput" type="search" placeholder="Busque experiências, cursos, eventos e projetos"></form>
+    <div class="nav-actions">
+      <a href="#instituicoes">Instituições</a><a href="#categorias">Categorias</a><a href="#eventos">Eventos</a>
+      <button class="pill-btn" data-open="favorites">♡ <span>Favoritos</span><b id="favCount">0</b></button>
+      <button class="pill-btn" data-open="cart">🛒 <span>Carrinho</span><b id="cartCount">0</b></button>
+      <button class="pill-btn" data-open="login">Entrar</button>
+    </div>
+  </div>
+  <div class="menu-row"><div class="menu-row-inner">
+    <button class="active" data-filter-inst="all">Tudo</button><button data-filter-inst="undb">UNDB</button><button data-filter-inst="dom-bosco">Dom Bosco Exponencial</button><button data-filter-inst="pos-undb">Pós-Graduação UNDB</button><a href="#produtos">Mais buscados</a><a href="#historico">Últimas experiências</a>
+  </div></div>
+</header>
+<main>
+<section class="hero" id="home"><div class="carousel" id="carousel">
+  <article class="slide active g1" data-product="giro-profissoes"><div class="slide-copy"><span class="tag">UNDB • Experiência universitária</span><h1>Giro das Profissões UNDB</h1><p>Evento presencial para estudantes conhecerem cursos, laboratórios, mercado e possibilidades de carreira.</p><div class="slide-actions"><button class="secondary" data-detail="giro-profissoes">Ver detalhes</button><button class="primary" data-add="giro-profissoes">Inscrever-se</button></div></div><div class="slide-art"><div class="fake-poster"><div><strong>Giro das<br>Profissões</strong><br><span>Inscrições abertas</span></div></div></div></article>
+  <article class="slide g2" data-product="ferias-movimento"><div class="slide-copy"><span class="tag">Dom Bosco Exponencial • Férias</span><h1>Férias em Movimento</h1><p>Programação especial para crianças com diversão, aprendizagem, movimento e experiências guiadas.</p><div class="slide-actions"><button class="secondary" data-detail="ferias-movimento">Ver detalhes</button><button class="primary" data-add="ferias-movimento">Comprar diária</button></div></div><div class="slide-art"><div class="fake-poster"><div><strong>Férias em<br>Movimento</strong><br><span>Diárias disponíveis</span></div></div></div></article>
+  <article class="slide g3" data-product="ia-negocios"><div class="slide-copy"><span class="tag">Pós-Graduação UNDB • Curso livre</span><h1>IA Estratégica para Negócios</h1><p>Curso rápido para profissionais que querem aplicar inteligência artificial com visão prática, comercial e estratégica.</p><div class="slide-actions"><button class="secondary" data-detail="ia-negocios">Ver detalhes</button><button class="primary" data-add="ia-negocios">Adicionar ao carrinho</button></div></div><div class="slide-art"><div class="fake-poster"><div><strong>IA para<br>Negócios</strong><br><span>Curso livre</span></div></div></div></article>
+  <article class="slide g4" data-product="startup-experience"><div class="slide-copy"><span class="tag">UNDB • Imersão</span><h1>Startup Experience</h1><p>Vivência prática para desenvolver ideias, testar soluções e apresentar projetos com mentalidade de inovação.</p><div class="slide-actions"><button class="secondary" data-detail="startup-experience">Ver detalhes</button><button class="primary" data-add="startup-experience">Comprar ingresso</button></div></div><div class="slide-art"><div class="fake-poster"><div><strong>Startup<br>Experience</strong><br><span>Imersão prática</span></div></div></div></article>
+  <button class="arrow prev" id="prev">‹</button><button class="arrow next" id="next">›</button><div class="dots" id="dots"></div>
+</div></section>
+<section class="quick"><div class="quick-card"><strong>3 instituições</strong><span>UNDB, Dom Bosco e Pós UNDB</span></div><div class="quick-card"><strong>Produtos avulsos</strong><span>Eventos, férias, cursos e projetos</span></div><div class="quick-card"><strong>Jornada clicável</strong><span>Favoritos, carrinho, login e checkout</span></div><div class="quick-card"><strong>Calendário</strong><span>Próximas experiências em destaque</span></div></section>
+<section class="section" id="instituicoes"><div class="section-head"><div><p class="label">Vitrines por instituição</p><h2>Cada marca com seus próprios produtos</h2></div><p class="hint">A home precisa permitir filtrar por instituição, mas também funcionar como uma vitrine única do Grupo Dom Bosco.</p></div><div class="inst-grid"><article class="inst-card"><p class="label">Instituição</p><h3>UNDB</h3><p>Eventos universitários, projetos de relacionamento, experiências de carreira e vivências acadêmicas.</p><button class="outline" data-filter-inst="undb">Ver produtos UNDB</button></article><article class="inst-card"><p class="label">Instituição</p><h3>Dom Bosco Exponencial</h3><p>Férias em Movimento, Sábado em Movimento, Sleep Over e vivências escolares.</p><button class="outline" data-filter-inst="dom-bosco">Ver produtos Dom Bosco</button></article><article class="inst-card"><p class="label">Instituição</p><h3>Pós-Graduação UNDB</h3><p>Cursos livres, imersões, oficinas e formações rápidas para profissionais.</p><button class="outline" data-filter-inst="pos-undb">Ver produtos Pós UNDB</button></article></div></section>
+<section class="section" id="categorias"><div class="section-head"><div><p class="label">Categorias</p><h2>Explore por tipo de produto</h2></div><button class="chip active" data-filter-cat="all">Ver todos</button></div><div class="category-grid"><button class="cat" data-filter-cat="ferias"><i>🏃</i><strong>Férias</strong><span>Colônias e diárias</span></button><button class="cat" data-filter-cat="eventos"><i>🎟️</i><strong>Eventos</strong><span>Inscrições e ingressos</span></button><button class="cat" data-filter-cat="cursos"><i>📚</i><strong>Cursos livres</strong><span>Curta duração</span></button><button class="cat" data-filter-cat="imersoes"><i>🚀</i><strong>Imersões</strong><span>Experiências práticas</span></button><button class="cat" data-filter-cat="projetos"><i>✨</i><strong>Projetos</strong><span>Vivências especiais</span></button><button class="cat" data-filter-cat="gratuitos"><i>🆓</i><strong>Gratuitos</strong><span>Captação e relacionamento</span></button></div></section>
+<section class="section" id="produtos"><div class="section-head"><div><p class="label">Mais buscados</p><h2>Produtos em destaque</h2></div><div class="chips"><button class="chip active" data-filter-inst="all">Todos</button><button class="chip" data-filter-inst="undb">UNDB</button><button class="chip" data-filter-inst="dom-bosco">Dom Bosco</button><button class="chip" data-filter-inst="pos-undb">Pós UNDB</button></div></div><div class="product-grid" id="productGrid"></div></section>
+<section class="section" id="eventos"><div class="calendar-wrap"><div class="panel"><div class="section-head"><div><p class="label">Calendário</p><h2>Próximos eventos</h2></div></div><div id="eventList"></div></div><aside class="panel"><p class="label">Recomendação</p><h2>Sim, use fotos dos últimos eventos.</h2><p class="hint">Isso funciona como prova social: mostra evento cheio, experiência real, confiança e ajuda a vender a próxima edição.</p><button class="primary" onclick="document.querySelector('#historico').scrollIntoView()">Ver últimas experiências</button></aside></div></section>
+<section class="section" id="historico"><div class="section-head"><div><p class="label">Prova social</p><h2>Últimas experiências realizadas</h2></div><p class="hint">Aqui entram fotos reais: Férias em Movimento 2025, Giro das Profissões UNDB, Sábado em Movimento, Sleep Over e outras ações.</p></div><div class="past-grid"><article class="past past1"><strong>Férias em Movimento 2025</strong></article><article class="past past2"><strong>Giro das Profissões UNDB</strong></article><article class="past past3"><strong>Sábado em Movimento</strong></article><article class="past past4"><strong>Sleep Over Dom Bosco</strong></article></div></section>
+<section class="section"><div class="section-head"><div><p class="label">Jornada completa</p><h2>O que a ferramenta precisa permitir</h2></div></div><div class="journey"><div class="step"><b>1</b><strong>Descoberta</strong><span>Banner em carrossel, categorias e busca.</span></div><div class="step"><b>2</b><strong>Filtragem</strong><span>Produtos por instituição, categoria e data.</span></div><div class="step"><b>3</b><strong>Produto</strong><span>Página com detalhes, preço, data e CTA.</span></div><div class="step"><b>4</b><strong>Compra</strong><span>Favoritos, carrinho, login e checkout.</span></div><div class="step"><b>5</b><strong>Relacionamento</strong><span>Histórico, inscrições e futuras campanhas.</span></div></div></section>
+<section class="footer-cta"><div class="cta"><div><h2>Protótipo visual para alinhar com a Mkt4Edu</h2><p>Use essa versão para mostrar que o marketplace precisa ser uma loja de experiências do GDB, não apenas uma página simples de lista de cursos.</p></div><button class="secondary" data-open="cart">Testar carrinho</button></div></section>
+</main>
+<div class="drawer" id="cartDrawer"><div class="drawer-panel"><button class="close" data-close>×</button><h2>Carrinho</h2><div id="cartItems" class="drawer-list"></div><div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div><button class="primary" style="width:100%" data-open="checkout">Finalizar compra</button></div></div>
+<div class="drawer" id="favDrawer"><div class="drawer-panel"><button class="close" data-close>×</button><h2>Favoritos</h2><div id="favItems" class="drawer-list"></div></div></div>
+<div class="modal" id="loginModal"><div class="modal-card small"><button class="close" data-close>×</button><h2>Entrar</h2><p class="hint">Área para acompanhar compras, inscrições, certificados e favoritos.</p><label>E-mail<input type="email" placeholder="seunome@email.com"></label><label>Senha<input type="password" placeholder="••••••••"></label><button class="primary" style="width:100%" data-close>Entrar</button></div></div>
+<div class="modal" id="detailModal"><div class="modal-card" id="detailContent"></div></div>
+<div class="modal" id="checkoutModal"><div class="modal-card small"><button class="close" data-close>×</button><h2>Checkout visual</h2><p class="hint">Simulação da etapa final para testar a jornada.</p><label>Nome completo<input placeholder="Nome do comprador"></label><label>E-mail<input placeholder="email@exemplo.com"></label><div class="checkout-grid"><label>Pagamento<select><option>Cartão de crédito</option><option>Pix</option><option>Boleto</option></select></label><label>Cupom<input placeholder="Código do cupom"></label></div><button class="primary" style="width:100%" data-finish>Confirmar pedido</button></div></div>
+<div class="toast" id="toast">Adicionado</div>
+<script>
+const products=[
+{id:'giro-profissoes',name:'Giro das Profissões UNDB',inst:'undb',cat:'eventos',price:0,date:'12 AGO',place:'Campus UNDB',type:'Inscrição gratuita',desc:'Vivência presencial para estudantes conhecerem cursos, laboratórios, mercado e possibilidades de carreira.',img:'p-undb'},
+{id:'startup-experience',name:'Startup Experience',inst:'undb',cat:'imersoes',price:79,date:'20 SET',place:'UNDB Renascença',type:'Imersão',desc:'Imersão prática para criar, testar e apresentar ideias com mentalidade de inovação.',img:'p-undb'},
+{id:'ferias-movimento',name:'Férias em Movimento',inst:'dom-bosco',cat:'ferias',price:120,date:'JUL',place:'Dom Bosco',type:'Diária',desc:'Programação especial para crianças com diversão, aprendizagem, movimento e experiências guiadas.',img:'p-db'},
+{id:'sabado-movimento',name:'Sábado em Movimento',inst:'dom-bosco',cat:'projetos',price:89,date:'SÁB',place:'Dom Bosco',type:'Experiência',desc:'Experiência de sábado para crianças com atividades práticas, movimento e convivência.',img:'p-db'},
+{id:'sleep-over',name:'Sleep Over Dom Bosco',inst:'dom-bosco',cat:'eventos',price:149,date:'18 OUT',place:'Dom Bosco',type:'Ingresso',desc:'Noite especial de integração, brincadeiras e vivência escolar supervisionada.',img:'p-db'},
+{id:'ia-negocios',name:'IA Estratégica para Negócios',inst:'pos-undb',cat:'cursos',price:199,date:'05 AGO',place:'Online',type:'Curso livre',desc:'Curso rápido para profissionais aplicarem inteligência artificial com visão prática e estratégica.',img:'p-pos'},
+{id:'power-bi',name:'Business Intelligence com Power BI',inst:'pos-undb',cat:'cursos',price:249,date:'22 AGO',place:'Online',type:'Curso livre',desc:'Formação curta para análise de dados, dashboards e tomada de decisão.',img:'p-pos'},
+{id:'lideranca',name:'Comunicação do Líder',inst:'pos-undb',cat:'imersoes',price:99,date:'10 SET',place:'Imperatriz',type:'Imersão',desc:'Vivência prática para lideranças que querem melhorar comunicação, impacto e gestão.',img:'p-pos'}
+];
+let inst='all',cat='all',cart=[],favs=[],slide=0;const money=v=>v===0?'Gratuito':v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),1600)}function render(){let list=products.filter(p=>(inst==='all'||p.inst===inst)&&(cat==='all'||p.cat===cat));$('#productGrid').innerHTML=list.map(p=>`<article class="product"><div class="photo ${p.img}"><span class="badge">${p.type}</span><button class="heart ${favs.includes(p.id)?'active':''}" data-fav="${p.id}">♡</button><span>${p.name}</span></div><div class="body"><h3>${p.name}</h3><div class="meta"><span>${p.date}</span><span>•</span><span>${p.place}</span></div><div class="price">${money(p.price)}</div><div class="product-actions"><button class="details" data-detail="${p.id}">Detalhes</button><button class="add" data-add="${p.id}">${p.price===0?'Inscrever':'Comprar'}</button></div></div></article>`).join('')||'<div class="empty">Nenhum produto encontrado.</div>';$('#eventList').innerHTML=products.slice(0,5).map(p=>`<div class="event"><div class="date"><b>${p.date.split(' ')[0]}</b><span>${p.date.split(' ')[1]||''}</span></div><div><h3>${p.name}</h3><p>${p.place} • ${p.type}</p></div><button class="outline" data-detail="${p.id}">Ver</button></div>`).join('');updateDrawers()}function updateDrawers(){ $('#cartCount').textContent=cart.length; $('#favCount').textContent=favs.length; let total=cart.reduce((s,id)=>s+(products.find(p=>p.id===id)?.price||0),0); $('#total').textContent=money(total); $('#cartItems').innerHTML=cart.map(id=>mini(products.find(p=>p.id===id),'cart')).join('')||'<div class="empty">Seu carrinho está vazio.</div>'; $('#favItems').innerHTML=favs.map(id=>mini(products.find(p=>p.id===id),'fav')).join('')||'<div class="empty">Nenhum favorito ainda.</div>'}function mini(p,type){return `<div class="mini"><div class="mini-thumb"></div><div><h4>${p.name}</h4><p>${money(p.price)}</p></div><button class="remove" data-remove-${type}="${p.id}">×</button></div>`}function detail(id){let p=products.find(x=>x.id===id);$('#detailContent').innerHTML=`<button class="close" data-close>×</button><div class="detail"><div class="detail-img ${p.img}">${p.name}</div><div><p class="label">${p.type} • ${p.place}</p><h2>${p.name}</h2><p>${p.desc}</p><div class="benefits"><span>✓ Produto vinculado à instituição ${p.inst==='undb'?'UNDB':p.inst==='dom-bosco'?'Dom Bosco Exponencial':'Pós-Graduação UNDB'}</span><span>✓ Data, lote, vagas e pagamento visíveis</span><span>✓ CTA claro para compra ou inscrição</span></div><h2>${money(p.price)}</h2><div class="slide-actions"><button class="primary" data-add="${p.id}">${p.price===0?'Inscrever-se':'Adicionar ao carrinho'}</button><button class="outline" data-fav="${p.id}">Favoritar</button></div></div></div>`;open('detail')}function open(type){({cart:'#cartDrawer',favorites:'#favDrawer',login:'#loginModal',checkout:'#checkoutModal',detail:'#detailModal'}[type]&&$(({cart:'#cartDrawer',favorites:'#favDrawer',login:'#loginModal',checkout:'#checkoutModal',detail:'#detailModal'})[type]).classList.add('open'))}function closeAll(){$$('.drawer,.modal').forEach(x=>x.classList.remove('open'))}document.addEventListener('click',e=>{let b=e.target.closest('button,a');if(!b)return;if(b.dataset.open){open(b.dataset.open)}if(b.dataset.close!==undefined){closeAll()}if(b.dataset.add){cart.push(b.dataset.add);updateDrawers();toast('Adicionado ao carrinho')}if(b.dataset.fav){favs=favs.includes(b.dataset.fav)?favs.filter(x=>x!==b.dataset.fav):[...favs,b.dataset.fav];render();toast('Favoritos atualizado')}if(b.dataset.detail){detail(b.dataset.detail)}if(b.dataset.filterInst){inst=b.dataset.filterInst;$$('[data-filter-inst]').forEach(x=>x.classList.toggle('active',x.dataset.filterInst===inst));render();document.querySelector('#produtos').scrollIntoView()}if(b.dataset.filterCat){cat=b.dataset.filterCat;$$('[data-filter-cat]').forEach(x=>x.classList.toggle('active',x.dataset.filterCat===cat));render();document.querySelector('#produtos').scrollIntoView()}if(b.dataset.removeCart){cart=cart.filter(x=>x!==b.dataset.removeCart);updateDrawers()}if(b.dataset.removeFav){favs=favs.filter(x=>x!==b.dataset.removeFav);updateDrawers();render()}if(b.dataset.finish!==undefined){closeAll();toast('Pedido confirmado visualmente')}});$('#searchForm').addEventListener('submit',e=>{e.preventDefault();let q=$('#searchInput').value.toLowerCase();inst='all';cat='all';$('#productGrid').innerHTML=products.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)).map(p=>`<article class="product"><div class="photo ${p.img}"><span class="badge">${p.type}</span><button class="heart" data-fav="${p.id}">♡</button><span>${p.name}</span></div><div class="body"><h3>${p.name}</h3><div class="meta"><span>${p.date}</span><span>•</span><span>${p.place}</span></div><div class="price">${money(p.price)}</div><div class="product-actions"><button class="details" data-detail="${p.id}">Detalhes</button><button class="add" data-add="${p.id}">Comprar</button></div></div></article>`).join('')||'<div class="empty">Nenhum resultado encontrado.</div>';document.querySelector('#produtos').scrollIntoView()});function showSlide(n){let slides=$$('.slide');slide=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('active',i===slide));$$('#dots button').forEach((d,i)=>d.classList.toggle('active',i===slide))}function initSlides(){let slides=$$('.slide');$('#dots').innerHTML=[...slides].map((_,i)=>`<button data-dot="${i}"></button>`).join('');$('#prev').onclick=()=>showSlide(slide-1);$('#next').onclick=()=>showSlide(slide+1);$('#dots').onclick=e=>{if(e.target.dataset.dot)showSlide(+e.target.dataset.dot)};showSlide(0);setInterval(()=>showSlide(slide+1),5500)}initSlides();render();
+</script>
 </body>
 </html>
