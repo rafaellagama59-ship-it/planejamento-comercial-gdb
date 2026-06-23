@@ -62,3 +62,5 @@ body.theme-carnaval{--navy:#401A79;--navy2:#BB197C;--accent:#FFB000;--bg:#FFF8F0
 @media(max-width:900px){
   .visit-grid{grid-template-columns:1fr}
 }
+
+.delete-btn{border:0;background:#fff0f0;color:#c1121f;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:900;box-shadow:none;white-space:nowrap}.delete-btn:hover{background:#ffdada}
