@@ -12,7 +12,7 @@
     <a href="#calendario" class="nav active">📅<b>Calendário</b></a>
     <a href="#metas" class="nav">🎯<b>Metas</b></a>
     <a href="#sheets" class="nav">🔄<b>Sheets</b></a>
-    <a href="#visitas" class="nav">🏫<b>Visitas UNDB</b></a>
+    <a href="#visitas-undb" class="nav">🏫<b>Visitas UNDB</b></a>
     <a href="#config" class="nav">⚙️<b>Config</b></a>
     <div class="tip">💡<br>Edite direto na página. As alterações ficam salvas neste navegador.</div>
   </aside>
@@ -109,46 +109,54 @@
     </section>
 
 
-    <section class="panel visit-panel" id="visitas">
+    <section class="panel visit-panel" id="visitas-undb">
       <div class="panel-title">
         <h2>🏫 Agendamento de Visita UNDB</h2>
         <a class="visit-link" href="https://undb.edu.br/agende-uma-visita/" target="_blank" rel="noopener">Abrir página ↗</a>
       </div>
 
+      <div class="visit-highlight">
+        <strong>Objetivo da aba:</strong>
+        centralizar o fluxo de escolas que desejam visitar a UNDB fora do projeto anual Giro das Profissões.
+      </div>
+
       <div class="visit-grid">
         <div class="visit-card">
-          <h3>Objetivo</h3>
-          <p contenteditable="true" data-visit-field="objetivo">Além do Giro das Profissões, escolas que desejam visitar a UNDB fora do projeto anual podem solicitar o agendamento pelo site oficial.</p>
+          <h3>📌 Contexto</h3>
+          <p contenteditable="true" data-visit-field="contexto">
+            Além do projeto anual Giro das Profissões, as escolas que desejam realizar uma visita à UNDB por fora do calendário oficial poderão solicitar o agendamento pelo site.
+          </p>
         </div>
 
         <div class="visit-card">
-          <h3>Fluxo de atendimento</h3>
+          <h3>🔗 Página de agendamento</h3>
+          <p>
+            Link oficial:
+            <a href="https://undb.edu.br/agende-uma-visita/" target="_blank" rel="noopener">https://undb.edu.br/agende-uma-visita/</a>
+          </p>
+        </div>
+
+        <div class="visit-card">
+          <h3>👤 Responsável pelo contato</h3>
+          <p contenteditable="true" data-visit-field="responsavel">
+            Thayana receberá o interesse por e-mail e fará o primeiro contato com a escola para alinhar a visita.
+          </p>
+        </div>
+
+        <div class="visit-card">
+          <h3>✅ Fluxo operacional</h3>
           <ol>
-            <li contenteditable="true" data-visit-field="fluxo1">A escola acessa a página de agendamento e registra o interesse.</li>
-            <li contenteditable="true" data-visit-field="fluxo2">A solicitação chega diretamente no e-mail da Thayana.</li>
-            <li contenteditable="true" data-visit-field="fluxo3">Thayana entra em contato com a escola para alinhar data, horário e quantidade de alunos.</li>
-            <li contenteditable="true" data-visit-field="fluxo4">Após o alinhamento, Thayana valida a disponibilidade com a coordenação do curso envolvido.</li>
+            <li contenteditable="true" data-visit-field="fluxo1">A escola acessa a página e registra o interesse.</li>
+            <li contenteditable="true" data-visit-field="fluxo2">A solicitação é enviada para o e-mail da Thayana.</li>
+            <li contenteditable="true" data-visit-field="fluxo3">Thayana entra em contato com a escola para alinhar data, horário, curso de interesse e quantidade de alunos.</li>
+            <li contenteditable="true" data-visit-field="fluxo4">Após o alinhamento, Thayana valida a agenda com a coordenação do curso.</li>
+            <li contenteditable="true" data-visit-field="fluxo5">Com a confirmação, a visita é registrada no calendário comercial.</li>
           </ol>
-        </div>
-
-        <div class="visit-card">
-          <h3>Responsável pelo primeiro contato</h3>
-          <p contenteditable="true" data-visit-field="responsavel"><b>Thayana</b> — recebe o interesse, retorna para a escola e conduz o alinhamento inicial.</p>
-        </div>
-
-        <div class="visit-card">
-          <h3>Próximo passo interno</h3>
-          <p contenteditable="true" data-visit-field="proximo">Organizar o fluxo de acompanhamento das escolas interessadas para registrar visitas solicitadas, visitas confirmadas e cursos envolvidos.</p>
         </div>
       </div>
 
       <div class="visit-actions">
         <button type="button" id="copyVisitSummary">📋 Copiar resumo</button>
-      </div>
-
-      <div class="formula-box">
-        <b>Resumo rápido:</b><br>
-        Escolas interessadas em visitar a UNDB fora do Giro das Profissões poderão solicitar o agendamento pelo site. O interesse será direcionado para a Thayana, que fará contato com a escola e alinhará a visita com a coordenação do curso.
       </div>
     </section>
 
