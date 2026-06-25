@@ -75,3 +75,17 @@ body.theme-carnaval{--navy:#401A79;--navy2:#BB197C;--accent:#FFB000;--bg:#FFF8F0
   white-space:nowrap;
 }
 .delete-btn:hover{background:#ffdada}
+
+.auto-total{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:90px;
+  padding:10px 12px;
+  border-radius:10px;
+  background:#eef5ff;
+  border:1px solid var(--line);
+  color:var(--navy);
+  font-weight:900;
+}
+th small{display:block;font-size:10px;opacity:.85;margin-top:2px}
