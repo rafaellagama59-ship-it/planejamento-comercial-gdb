@@ -3,53 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hub de Inteligência Comercial | Grupo Dom Bosco</title>
+  <title>Hub de Inteligência Comercial | GDB</title>
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <aside class="sidebar" id="sidebar">
-    <div class="brand">
-      <div class="brand-mark">GDB</div>
-      <div>
-        <strong>Hub de Inteligência</strong>
-        <span>Comercial</span>
-      </div>
-    </div>
-    <nav class="nav" id="nav"></nav>
-    <div class="sidebar-note">
-      <strong>Base de dados</strong>
-      <span id="sourceStatus">Usando dados de exemplo</span>
-    </div>
+  <aside class="sidebar">
+    <div class="brand"><strong>GDB</strong><span>Hub de Inteligência Comercial</span></div>
+    <nav id="nav"></nav>
+    <div class="hint">Campos editáveis direto na página. Use “Salvar” para gravar no navegador.</div>
   </aside>
 
   <main class="app">
     <header class="topbar">
-      <button class="menu-btn" id="toggleSidebar">☰</button>
       <div>
-        <small>Grupo Dom Bosco</small>
+        <span class="eyebrow">Grupo Dom Bosco</span>
         <h1 id="pageTitle">Hub de Inteligência Comercial</h1>
+        <p id="pageSubtitle">Acompanhamento comercial, calendário, ações, eventos e reuniões.</p>
       </div>
-      <div class="top-actions">
-        <button class="ghost" id="refreshData">Atualizar dados</button>
-        <a class="primary" id="powerBiMedicina" target="_blank" rel="noreferrer">Power BI Medicina</a>
+      <div class="actions">
+        <button id="saveBtn" class="btn primary">Salvar alterações</button>
+        <button id="addRowBtn" class="btn">+ Nova linha</button>
+        <button id="resetBtn" class="btn danger">Restaurar exemplo</button>
       </div>
     </header>
 
-    <section class="hero" id="pageIntro"></section>
     <section id="content"></section>
   </main>
-
-  <template id="cardTemplate">
-    <article class="metric-card">
-      <div class="metric-head">
-        <span class="metric-icon"></span>
-        <span class="metric-source"></span>
-      </div>
-      <h3></h3>
-      <strong></strong>
-      <p></p>
-    </article>
-  </template>
 
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
