@@ -1,24 +1,11 @@
-/*
-  CONFIGURAÇÃO DAS PLANILHAS
-  1) Publique cada aba da sua planilha como CSV.
-  2) Cole o link abaixo no campo correspondente.
-  3) Se deixar vazio, o Hub usa os dados editáveis salvos no navegador.
-
-  Colunas esperadas por aba:
-  home: titulo,valor,fonte,descricao,tipo
-  calendario/acoes/eventos: periodo,instituicoes,tema,descricao,canais,responsavel,status,totalLeads,leadsUNDB,leadsDB,leadsPOS,investimento,observacoes
-  reunioes: data,bloco,responsavel,tarefa,prazo,status,observacoes
-*/
+// Quando sua planilha estiver publicada em CSV, cole os links aqui.
+// Por enquanto, o Hub funciona editável e salva no navegador.
 window.HUB_CONFIG = {
   csv: {
-    home: "",
+    indicadores: "",
     calendario: "",
-    internas: "",
-    externas: "",
-    domBosco: "",
-    undb: "",
-    pos: "",
-    medicina: "",
+    acoesInternas: "",
+    acoesExternas: "",
     eventos: "",
     reunioes: ""
   },

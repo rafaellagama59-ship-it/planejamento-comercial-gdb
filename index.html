@@ -3,62 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hub de Inteligência Comercial | Grupo Dom Bosco</title>
+  <title>Hub de Inteligência Comercial — Grupo Dom Bosco</title>
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
   <aside class="sidebar">
     <div class="brand">
       <div class="brand-mark">GDB</div>
-      <div><strong>Hub de Inteligência</strong><span>Comercial</span></div>
+      <div>
+        <strong>Hub de Inteligência</strong>
+        <span>Comercial</span>
+      </div>
     </div>
-    <nav id="menu" class="menu"></nav>
-    <div class="sidebar-note">
-      <strong>Dados editáveis</strong>
-      <span>As alterações ficam salvas neste navegador. Para atualização automática, publique a planilha em CSV e cole os links em <b>Configurações</b>.</span>
-    </div>
+    <nav id="nav"></nav>
+    <div class="side-note">Tudo editável na página. Use “Salvar alterações” para gravar neste navegador.</div>
   </aside>
 
   <main class="app">
     <header class="topbar">
       <div>
         <small>Grupo Dom Bosco</small>
-        <h1 id="pageTitle">Hub de Inteligência Comercial</h1>
-        <p id="pageSubtitle">Acompanhamento comercial, ações, eventos, medicina e reuniões.</p>
+        <h1 id="pageTitle">Visão Geral</h1>
+        <p id="pageSubtitle">Indicadores principais e acompanhamento comercial.</p>
       </div>
-      <div class="top-actions">
-        <button class="btn ghost" id="btnExport">Exportar JSON</button>
-        <button class="btn" id="btnImport">Importar JSON</button>
-        <input type="file" id="fileImport" accept="application/json" hidden>
-        <button class="btn primary" id="btnSaveAll">Salvar alterações</button>
+      <div class="actions">
+        <button class="btn ghost" id="exportBtn">Exportar backup</button>
+        <label class="btn ghost file-label">Importar backup<input type="file" id="importFile" accept="application/json" hidden></label>
+        <button class="btn primary" id="saveBtn">Salvar alterações</button>
       </div>
     </header>
 
-    <section id="view-home" class="view active"></section>
-    <section id="view-calendario" class="view"></section>
-    <section id="view-internas" class="view"></section>
-    <section id="view-externas" class="view"></section>
-    <section id="view-dom-bosco" class="view"></section>
-    <section id="view-undb" class="view"></section>
-    <section id="view-pos" class="view"></section>
-    <section id="view-medicina" class="view"></section>
-    <section id="view-eventos" class="view"></section>
-    <section id="view-reunioes" class="view"></section>
-    <section id="view-config" class="view"></section>
+    <section id="view"></section>
   </main>
-
-  <template id="tableTemplate">
-    <div class="panel">
-      <div class="panel-head">
-        <div><h2></h2><p></p></div>
-        <div class="toolbar">
-          <input class="search" placeholder="Buscar..." />
-          <button class="btn add-row">+ Nova linha</button>
-        </div>
-      </div>
-      <div class="table-wrap"><table></table></div>
-    </div>
-  </template>
 
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
