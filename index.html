@@ -1,116 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hub de Inteligência Comercial | Grupo Dom Bosco</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <div class="brand-logo">GDB</div>
-      <div class="brand-text">HUB DE<br>INTELIGÊNCIA COMERCIAL</div>
+      <div class="brand-mark">GDB</div>
+      <div>
+        <strong>Hub de Inteligência</strong>
+        <span>Comercial</span>
+      </div>
     </div>
-
-    <nav class="menu" aria-label="Menu principal">
-      <button class="menu-item active" data-page="visao-geral">📊 Visão Geral</button>
-      <button class="menu-item" data-page="calendario">📅 Calendário Comercial</button>
-      <button class="menu-item" data-page="acoes-internas">🏢 Ações Internas</button>
-      <button class="menu-item" data-page="acoes-externas">🚩 Ações Externas</button>
-      <button class="menu-item" data-page="dom-bosco">🏫 Escola Dom Bosco</button>
-      <button class="menu-item" data-page="undb">🎓 UNDB Graduação</button>
-      <button class="menu-item" data-page="pos">🎯 Pós-Graduação</button>
-      <button class="menu-item" data-page="medicina">🩺 Medicina</button>
-      <button class="menu-item" data-page="reunioes">🤝 Reunião Comercial</button>
-    </nav>
-
+    <nav class="nav" id="nav"></nav>
     <div class="sidebar-note">
-      <strong>Atualização</strong>
-      <span>Use as planilhas de apoio para manter calendário, ações e reunião sempre atualizados.</span>
+      <strong>Base de dados</strong>
+      <span id="sourceStatus">Usando dados de exemplo</span>
     </div>
   </aside>
 
-  <main class="content">
+  <main class="app">
     <header class="topbar">
+      <button class="menu-btn" id="toggleSidebar">☰</button>
       <div>
-        <p class="eyebrow">Grupo Dom Bosco</p>
-        <h1 id="page-title">Hub de Inteligência Comercial</h1>
-        <p id="page-subtitle">Home com os principais indicadores comerciais por negócio.</p>
+        <small>Grupo Dom Bosco</small>
+        <h1 id="pageTitle">Hub de Inteligência Comercial</h1>
       </div>
       <div class="top-actions">
-        <a class="btn secondary" href="https://app.powerbi.com/view?r=eyJrIjoiNzI4ZWZmNmUtMjAxNS00NWVlLThhM2UtNTM1YjM1MTdjYmI1IiwidCI6ImZkOThjZTUxLTQ5ZmMtNDMyZS1hZGU3LTY0ZGQ3MWQzNGVjZSJ9" target="_blank" rel="noopener">Abrir Power BI Medicina</a>
+        <button class="ghost" id="refreshData">Atualizar dados</button>
+        <a class="primary" id="powerBiMedicina" target="_blank" rel="noreferrer">Power BI Medicina</a>
       </div>
     </header>
 
-    <section id="visao-geral" class="page active-page" data-title="Hub de Inteligência Comercial" data-subtitle="Home com os principais indicadores comerciais por negócio.">
-      <div class="home-hero">
-        <div>
-          <p class="eyebrow">Visão Geral</p>
-          <h2>Indicadores principais</h2>
-          <p>Resumo limpo para acompanhamento rápido da diretoria e da reunião comercial.</p>
-        </div>
-      </div>
-
-      <div class="kpi-grid home-kpis">
-        <article class="kpi-card primary"><span>Matrículas 2026.2 UNDB</span><strong>--</strong><small>Fonte: RM / Power BI UNDB</small></article>
-        <article class="kpi-card primary"><span>Matrículas Dom Bosco 2026</span><strong>--</strong><small>Fonte: RM / Power BI Escola</small></article>
-        <article class="kpi-card primary"><span>Matrículas Medicina 2026.2</span><strong>--</strong><small>Fonte: RM / Power BI Medicina</small></article>
-        <article class="kpi-card"><span>Inscritos no vestibular de Med</span><strong>--</strong><small>Processo seletivo tradicional</small></article>
-        <article class="kpi-card"><span>Inscritos ENEM Med</span><strong>--</strong><small>Entrada via ENEM</small></article>
-        <article class="kpi-card"><span>Inscritos Transferência Externa Med</span><strong>--</strong><small>Transferência externa Medicina</small></article>
-      </div>
-    </section>
-
-    <section id="calendario" class="page" data-title="Calendário Comercial" data-subtitle="Planejamento macro das campanhas, datas estratégicas e ações comerciais.">
-      <div class="page-intro"><h2>Calendário Comercial</h2><p>Visão macro do planejamento. As ações ficam separadas em internas e externas no menu lateral.</p></div>
-      <div class="panel"><h3>Planejamento geral</h3><div class="table-wrap"><table><thead><tr><th>Mês</th><th>Ação / Campanha</th><th>Negócio</th><th>Tipo</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead><tbody><tr><td>Julho</td><td>Férias em Movimento</td><td>Dom Bosco</td><td>Interna</td><td>Marketing</td><td>--</td><td><span class="badge progress">Em andamento</span></td></tr><tr><td>Julho</td><td>Processos seletivos Medicina</td><td>Medicina</td><td>Comercial</td><td>Allyson</td><td>--</td><td><span class="badge progress">Em andamento</span></td></tr><tr><td>Agosto</td><td>Campanha de Matrícula 2027</td><td>Dom Bosco</td><td>Interna</td><td>Ilana / Marketing</td><td>--</td><td><span class="badge planned">Planejado</span></td></tr></tbody></table></div></div>
-    </section>
-
-    <section id="acoes-internas" class="page" data-title="Ações Internas" data-subtitle="Ações realizadas dentro das unidades, campanhas institucionais e ativações internas.">
-      <div class="page-intro"><h2>Ações Internas</h2><p>Quando a pessoa clicar aqui, encontra somente ações internas: escola, graduação, pós, medicina, eventos próprios e ativações dentro das unidades.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Ações internas realizadas</span><strong>--</strong></article><article class="kpi-card"><span>Ações internas planejadas</span><strong>--</strong></article><article class="kpi-card"><span>Leads gerados</span><strong>--</strong></article><article class="kpi-card"><span>Custo total</span><strong>R$ --</strong></article></div>
-      <div class="panel"><h3>Controle de ações internas</h3><div class="table-wrap"><table><thead><tr><th>Data</th><th>Ação</th><th>Negócio</th><th>Local</th><th>Leads DB</th><th>Leads UNDB</th><th>Leads Pós</th><th>Custo</th><th>Responsável</th><th>Status</th><th>Observações</th></tr></thead><tbody><tr><td>--/--</td><td>Férias em Movimento</td><td>Dom Bosco</td><td>Escola Dom Bosco</td><td>--</td><td>--</td><td>--</td><td>R$ --</td><td>Marketing</td><td><span class="badge progress">Em andamento</span></td><td>--</td></tr><tr><td>--/--</td><td>Clínica de Férias</td><td>UNDB</td><td>Campus UNDB</td><td>--</td><td>--</td><td>--</td><td>R$ --</td><td>Marketing + Comercial</td><td><span class="badge planned">Planejado</span></td><td>--</td></tr></tbody></table></div></div>
-    </section>
-
-    <section id="acoes-externas" class="page" data-title="Ações Externas" data-subtitle="Ações de campo, feiras, ativações comerciais e captação fora das unidades.">
-      <div class="page-intro"><h2>Ações Externas</h2><p>Quando a pessoa clicar aqui, encontra somente ações externas: ativações em campo, feiras, escolas parceiras, eventos de mercado e captação fora das unidades.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Ações externas realizadas</span><strong>--</strong></article><article class="kpi-card"><span>Ações externas planejadas</span><strong>--</strong></article><article class="kpi-card"><span>Leads gerados</span><strong>--</strong></article><article class="kpi-card"><span>Custo total</span><strong>R$ --</strong></article></div>
-      <div class="panel"><h3>Controle de ações externas</h3><div class="table-wrap"><table><thead><tr><th>Data</th><th>Ação</th><th>Negócio</th><th>Local</th><th>Leads DB</th><th>Leads UNDB</th><th>Leads Pós</th><th>Custo</th><th>Responsável</th><th>Status</th><th>Observações</th></tr></thead><tbody><tr><td>--/--</td><td>Giro das Profissões</td><td>UNDB</td><td>Externo</td><td>--</td><td>--</td><td>--</td><td>R$ --</td><td>Marketing</td><td><span class="badge done">Concluído</span></td><td>--</td></tr><tr><td>--/--</td><td>Ação de captação</td><td>Dom Bosco / UNDB / Pós</td><td>Externo</td><td>--</td><td>--</td><td>--</td><td>R$ --</td><td>Marketing + Comercial</td><td><span class="badge planned">Planejado</span></td><td>--</td></tr></tbody></table></div></div>
-    </section>
-
-    <section id="dom-bosco" class="page" data-title="Escola Dom Bosco" data-subtitle="Acompanhamento comercial da Escola Dom Bosco Exponencial.">
-      <div class="page-intro"><h2>Escola Dom Bosco</h2><p>Indicadores comerciais, metas, captação, campanhas e matrículas.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Matrículas Dom Bosco 2026</span><strong>--</strong></article><article class="kpi-card"><span>Leads</span><strong>--</strong></article><article class="kpi-card"><span>Meta</span><strong>--</strong></article><article class="kpi-card"><span>Status</span><strong>--</strong></article></div>
-    </section>
-
-    <section id="undb" class="page" data-title="UNDB Graduação" data-subtitle="Acompanhamento comercial da graduação.">
-      <div class="page-intro"><h2>UNDB Graduação</h2><p>Indicadores de captação, inscrições, campanhas e matrículas da graduação.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Matrículas 2026.2 UNDB</span><strong>--</strong></article><article class="kpi-card"><span>Leads</span><strong>--</strong></article><article class="kpi-card"><span>Inscrições</span><strong>--</strong></article><article class="kpi-card"><span>CPL</span><strong>R$ --</strong></article></div>
-    </section>
-
-    <section id="pos" class="page" data-title="Pós-Graduação" data-subtitle="Acompanhamento comercial da Pós-Graduação.">
-      <div class="page-intro"><h2>Pós-Graduação</h2><p>Cursos ativos, campanhas, leads, investimento e matrículas.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Leads</span><strong>--</strong></article><article class="kpi-card"><span>Cursos ativos</span><strong>--</strong></article><article class="kpi-card"><span>Matrículas</span><strong>--</strong></article><article class="kpi-card"><span>CPL</span><strong>R$ --</strong></article></div>
-    </section>
-
-    <section id="medicina" class="page" data-title="Medicina" data-subtitle="Processos seletivos, inscritos e matrículas de Medicina.">
-      <div class="page-intro"><h2>Medicina</h2><p>Resumo executivo dos processos seletivos de Medicina e acesso ao dashboard completo.</p></div>
-      <div class="kpi-grid"><article class="kpi-card"><span>Matrículas Medicina 2026.2</span><strong>--</strong></article><article class="kpi-card"><span>Inscritos vestibular Med</span><strong>--</strong></article><article class="kpi-card"><span>Inscritos ENEM Med</span><strong>--</strong></article><article class="kpi-card"><span>Inscritos Transferência Externa Med</span><strong>--</strong></article></div>
-      <div class="panel"><h3>Processos seletivos Medicina</h3><div class="table-wrap"><table><thead><tr><th>Processo</th><th>Modalidade</th><th>Status</th><th>Inscritos</th><th>Data da prova</th><th>Responsável</th><th>Link</th></tr></thead><tbody><tr><td>Vestibular Medicina</td><td>Prova tradicional</td><td><span class="badge progress">Em andamento</span></td><td>--</td><td>--</td><td>Allyson</td><td><a href="https://app.powerbi.com/view?r=eyJrIjoiNzI4ZWZmNmUtMjAxNS00NWVlLThhM2UtNTM1YjM1MTdjYmI1IiwidCI6ImZkOThjZTUxLTQ5ZmMtNDMyZS1hZGU3LTY0ZGQ3MWQzNGVjZSJ9" target="_blank" rel="noopener">Abrir Power BI</a></td></tr><tr><td>ENEM Medicina</td><td>ENEM</td><td><span class="badge progress">Em andamento</span></td><td>--</td><td>--</td><td>Allyson</td><td>--</td></tr><tr><td>Transferência Externa Medicina</td><td>Transferência</td><td><span class="badge progress">Em andamento</span></td><td>--</td><td>--</td><td>Allyson</td><td>--</td></tr></tbody></table></div></div>
-    </section>
-
-    <section id="reunioes" class="page" data-title="Reunião Comercial" data-subtitle="Central da reunião comercial de segunda-feira: data, responsáveis, tarefas e observações.">
-      <div class="page-intro"><h2>Reunião Comercial de Segunda-feira</h2><p>Espaço para registrar o que foi tratado, quem ficou responsável, prazo e observações de cada demanda.</p></div>
-      <div class="meeting-grid"><article class="panel meeting-card"><p class="eyebrow">Dom Bosco</p><h3>Ilana</h3><p>Captação, matrículas, pendências e ações da Escola.</p></article><article class="panel meeting-card"><p class="eyebrow">UNDB e Medicina</p><h3>Allyson</h3><p>Graduação, Medicina, processos seletivos e atendimentos.</p></article><article class="panel meeting-card"><p class="eyebrow">Ações</p><h3>Marketing</h3><p>Campanhas, eventos, CRM, performance e materiais.</p></article></div>
-      <div class="panel"><h3>Participantes fixos</h3><div class="people-list"><span>Allyson</span><span>Fábio</span><span>Nathalia</span><span>Rick</span><span>Rafaela</span><span>Ilana</span></div></div>
-      <div class="panel"><h3>Plano de ação da reunião</h3><div class="table-wrap"><table><thead><tr><th>Data</th><th>Área / Bloco</th><th>Responsável</th><th>Tarefa / Demanda</th><th>Prazo</th><th>Status</th><th>Observações</th></tr></thead><tbody><tr><td>--/--/----</td><td>Dom Bosco</td><td>Ilana</td><td>Escrever tarefa gerada na reunião</td><td>--/--/----</td><td><span class="badge planned">Não iniciada</span></td><td>Observações da demanda</td></tr><tr><td>--/--/----</td><td>UNDB e Medicina</td><td>Allyson</td><td>Escrever tarefa gerada na reunião</td><td>--/--/----</td><td><span class="badge planned">Não iniciada</span></td><td>Observações da demanda</td></tr><tr><td>--/--/----</td><td>Ações</td><td>Marketing</td><td>Escrever tarefa gerada na reunião</td><td>--/--/----</td><td><span class="badge planned">Não iniciada</span></td><td>Observações da demanda</td></tr></tbody></table></div></div>
-      <div class="panel"><h3>Observações gerais da reunião</h3><div class="notes-box">Use este espaço para registrar decisões, riscos, alinhamentos importantes e pontos que precisam voltar na próxima segunda-feira.</div></div>
-    </section>
+    <section class="hero" id="pageIntro"></section>
+    <section id="content"></section>
   </main>
-  <script src="script.js"></script>
+
+  <template id="cardTemplate">
+    <article class="metric-card">
+      <div class="metric-head">
+        <span class="metric-icon"></span>
+        <span class="metric-source"></span>
+      </div>
+      <h3></h3>
+      <strong></strong>
+      <p></p>
+    </article>
+  </template>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
