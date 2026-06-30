@@ -1,21 +1,28 @@
 # Hub de Inteligência Comercial — Grupo Dom Bosco
 
-Versão refeita com campos editáveis, status em lista suspensa e botão para adicionar/excluir linhas.
+Projeto estático para GitHub Pages.
 
-## Como publicar
-Suba estes arquivos na raiz do GitHub:
+## Arquivos
 
 - `index.html`
-- `README.md`
-- pasta `css`
-- pasta `js`
-- pasta `assets`
+- `css/main.css`
+- `js/config.js`
+- `js/app.js`
+- `assets/`
 
-## Como editar
-- Edite os campos direto na tela.
-- Use **Salvar alterações** para gravar no navegador.
-- Use **+ Nova linha** para adicionar registros nas tabelas.
-- Status é selecionável: Planejado, Em andamento, Concluído, Atrasado, Cancelado.
+## Como atualizar dados automaticamente
 
-## Planilha automática
-Quando tiver os links CSV das abas da planilha, cole no arquivo `js/config.js`.
+1. Crie/atualize a planilha-base.
+2. Publique cada aba como CSV.
+3. Abra `js/config.js`.
+4. Cole os links em `window.HUB_CONFIG.csv`.
+5. Faça commit no GitHub.
+
+Enquanto os links CSV estiverem vazios, o Hub permite edição direta na página e salva no navegador com `localStorage`.
+
+## Campos editáveis
+
+- Todos os campos das tabelas são editáveis.
+- Status usa lista de seleção.
+- É possível adicionar e excluir linhas.
+- Há exportação/importação de backup JSON.

@@ -1,115 +1,65 @@
-const STATUS = ["Planejado","Em andamento","Concluído","Atrasado","Cancelado"];
-const AREAS = ["Dom Bosco","UNDB","Medicina","Pós-graduação","Marketing","Ações","Comercial"];
-const STORAGE_KEY = "hub-inteligencia-comercial-v4";
-
-const pages = [
-  {id:"home", icon:"📊", title:"Visão Geral", group:"Principal", subtitle:"Home com os principais indicadores comerciais por negócio."},
-  {id:"calendario", icon:"📅", title:"Calendário Comercial", group:"Principal", subtitle:"Planejamento macro de campanhas, ações e datas comerciais."},
-  {id:"dom-bosco", icon:"🏫", title:"Escola Dom Bosco", group:"Negócios", subtitle:"Acompanhamento do negócio Escola Dom Bosco."},
-  {id:"undb", icon:"🎓", title:"UNDB Graduação", group:"Negócios", subtitle:"Acompanhamento comercial da graduação."},
-  {id:"pos", icon:"🎯", title:"Pós-Graduação", group:"Negócios", subtitle:"Acompanhamento comercial da pós-graduação."},
-  {id:"medicina", icon:"🩺", title:"Medicina", group:"Negócios", subtitle:"Processos seletivos, vestibular, ENEM e transferência externa."},
-  {id:"eventos", icon:"🎪", title:"Eventos", group:"Operação", subtitle:"Eventos realizados, planejados, leads e custos."},
-  {id:"acoes-internas", icon:"🏢", title:"Ações Internas", group:"Operação", subtitle:"Ações internas do calendário comercial."},
-  {id:"acoes-externas", icon:"🌎", title:"Ações Externas", group:"Operação", subtitle:"Ações externas, visitas, ativações e captação."},
-  {id:"reunioes", icon:"🤝", title:"Reunião Comercial", group:"Gestão", subtitle:"Demandas da reunião de segunda-feira: data, responsáveis, tarefas e observações."},
-  {id:"metas", icon:"🎯", title:"Metas e Power BI", group:"Gestão", subtitle:"Links dos dashboards e metas de acompanhamento."}
+const STORAGE_KEY='hub-inteligencia-comercial-v1';
+const statusOptions=['Planejado','Em andamento','Concluído','Atrasado','Aguardando','Cancelado'];
+const menu=[
+ ['home','🏠','Visão Geral','Home com os principais indicadores comerciais por negócio.'],
+ ['calendario','📅','Calendário Comercial','Planejamento das campanhas, ações e marcos comerciais.'],
+ ['internas','🏢','Ações Internas','Ações internas do Grupo Dom Bosco.'],
+ ['externas','🌎','Ações Externas','Ações externas, visitas, feiras e captação em campo.'],
+ ['dom-bosco','🏫','Escola Dom Bosco','Acompanhamento comercial da Escola Dom Bosco.'],
+ ['undb','🎓','UNDB Graduação','Acompanhamento comercial da graduação.'],
+ ['pos','🎯','Pós-Graduação','Acompanhamento comercial da Pós-Graduação.'],
+ ['medicina','🩺','Medicina','Processos seletivos, inscritos e links dos dashboards.'],
+ ['eventos','🎪','Eventos','Eventos realizados, planejados, leads e custos.'],
+ ['reunioes','🤝','Reunião Comercial','Demandas das reuniões de segunda-feira.'],
+ ['config','⚙️','Configurações','Links CSV e Power BI.']
 ];
-
-const defaultData = {
-  indicadores: [
-    {titulo:"Matrículas 2026.2 UNDB", valor:"--", fonte:"Fonte: RM / Power BI UNDB"},
-    {titulo:"Matrículas Dom Bosco 2026", valor:"--", fonte:"Fonte: RM / Power BI Escola"},
-    {titulo:"Matrículas Medicina 2026.2", valor:"--", fonte:"Fonte: RM / Power BI Medicina"},
-    {titulo:"Inscritos no vestibular de Med", valor:"--", fonte:"Processo seletivo tradicional"},
-    {titulo:"Inscritos ENEM Med", valor:"--", fonte:"Entrada via ENEM"},
-    {titulo:"Inscritos Transferência Externa Med", valor:"--", fonte:"Transferência externa Medicina"}
-  ],
-  calendario: [
-    {periodo:"Julho", instituicao:"UNDB / Medicina", tema:"Clínica de Férias", descricao:"Experiência prática para acadêmicos da saúde", canais:"Instagram, Google, WhatsApp", responsavel:"Marketing + Comercial", prazo:"01/07/2026", status:"Planejado", observacoes:"Acompanhar captação"},
-    {periodo:"Agosto", instituicao:"Dom Bosco", tema:"Campanha Matrícula 2027", descricao:"Abertura de captação e reserva de vagas", canais:"WhatsApp, Meta, visitas", responsavel:"Ilana", prazo:"15/08/2026", status:"Em andamento", observacoes:"Alinhar calendário com escola"}
-  ],
-  acoesInternas: [
-    {data:"", area:"Marketing", acao:"Revisar calendário interno", responsavel:"Rafaela", prazo:"", status:"Planejado", observacoes:""}
-  ],
-  acoesExternas: [
-    {data:"", area:"Ações", acao:"Visita comercial externa", responsavel:"Marketing", prazo:"", status:"Planejado", observacoes:""}
-  ],
-  eventos: [
-    {data:"", evento:"Giro das Profissões", negocio:"UNDB", responsavel:"Marketing", leads:"", custo:"", status:"Planejado", observacoes:""}
-  ],
-  reunioes: [
-    {data:"", bloco:"Dom Bosco", responsavel:"Ilana", tarefa:"", prazo:"", status:"Planejado", observacoes:""},
-    {data:"", bloco:"UNDB e Medicina", responsavel:"Allyson", tarefa:"", prazo:"", status:"Planejado", observacoes:""},
-    {data:"", bloco:"Ações - Marketing", responsavel:"Marketing", tarefa:"", prazo:"", status:"Planejado", observacoes:""}
-  ],
-  negocio: [
-    {area:"Dom Bosco", indicador:"Leads", valor:"", meta:"", responsavel:"Ilana", status:"Planejado", observacoes:""},
-    {area:"UNDB", indicador:"Matrículas", valor:"", meta:"", responsavel:"Allyson", status:"Planejado", observacoes:""},
-    {area:"Pós-graduação", indicador:"Leads", valor:"", meta:"", responsavel:"Marketing", status:"Planejado", observacoes:""},
-    {area:"Medicina", indicador:"Inscritos", valor:"", meta:"", responsavel:"Allyson", status:"Planejado", observacoes:""}
-  ]
+const schemas={
+ calendario:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ internas:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ externas:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ domBosco:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ undb:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ pos:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ medicina:['periodo','instituicoes','tema','descricao','canais','responsavel','status','totalLeads','leadsUNDB','leadsDB','leadsPOS','investimento','observacoes'],
+ eventos:['data','evento','negocio','responsavel','status','leadsDB','leadsUNDB','leadsPOS','investimento','cpl','observacoes'],
+ reunioes:['data','bloco','responsavel','tarefa','prazo','status','observacoes']
 };
-
-let data = loadData();
-let currentPage = location.hash.replace("#","") || "home";
-
-function loadData(){
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || structuredClone(defaultData); }
-  catch { return structuredClone(defaultData); }
-}
-function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); flash("Alterações salvas."); }
-function resetData(){ if(confirm("Restaurar dados de exemplo? Isso apaga as edições salvas neste navegador.")){ data=structuredClone(defaultData); saveData(); render(); } }
-function flash(msg){ const old=document.querySelector(".toast"); if(old) old.remove(); const t=document.createElement("div"); t.className="toast"; t.textContent=msg; Object.assign(t.style,{position:"fixed",right:"22px",bottom:"22px",background:"#062b63",color:"#fff",padding:"14px 18px",borderRadius:"12px",fontWeight:"900",zIndex:9}); document.body.appendChild(t); setTimeout(()=>t.remove(),1800); }
-
-function buildNav(){
-  const nav=document.getElementById("nav"); nav.innerHTML=""; let group="";
-  pages.forEach(p=>{ if(p.group!==group){ group=p.group; const s=document.createElement("div"); s.className="nav-section"; s.textContent=group; nav.appendChild(s); }
-    const b=document.createElement("button"); b.className="nav-item"+(p.id===currentPage?" active":""); b.innerHTML=`<span>${p.icon}</span><span>${p.title}</span>`; b.onclick=()=>{ currentPage=p.id; location.hash=p.id; render(); }; nav.appendChild(b);
-  });
-}
-
-function setHeader(){ const p=pages.find(x=>x.id===currentPage)||pages[0]; pageTitle.textContent=p.title; pageSubtitle.textContent=p.subtitle; addRowBtn.style.display = ["home","metas"].includes(currentPage)?"none":"inline-block"; }
-
-function editable(value, path, type="text"){
-  const [collection,row,key]=path;
-  return `<input type="${type}" value="${escapeHtml(value||"")}" data-collection="${collection}" data-row="${row}" data-key="${key}">`;
-}
-function textarea(value,path){ const [collection,row,key]=path; return `<textarea data-collection="${collection}" data-row="${row}" data-key="${key}">${escapeHtml(value||"")}</textarea>`; }
-function select(value,path, options=STATUS){ const [collection,row,key]=path; return `<select data-collection="${collection}" data-row="${row}" data-key="${key}">${options.map(o=>`<option ${o===(value||"")?"selected":""}>${escapeHtml(o)}</option>`).join("")}</select>`; }
-function escapeHtml(v){ return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll('"',"&quot;"); }
-
-function renderHome(){
-  content.innerHTML = `<div class="notice"><strong>Visão Geral</strong><br>Esses 6 cards são editáveis. Quando a planilha estiver conectada no <code>js/config.js</code>, eles podem ser alimentados automaticamente.</div><div class="grid kpi-grid">${data.indicadores.map((k,i)=>`<div class="card kpi"><label>${editable(k.titulo,["indicadores",i,"titulo"])}</label><div class="value">${editable(k.valor,["indicadores",i,"valor"])}</div><div class="muted">${editable(k.fonte,["indicadores",i,"fonte"])}</div></div>`).join("")}</div>${powerCards()}`;
-}
-function powerCards(){ const p=window.HUB_CONFIG.powerBI; return `<div class="grid power-grid"><div class="card power-card"><h3>Power BI Medicina</h3><p>Processos seletivos e indicadores de Medicina.</p><a target="_blank" href="${p.medicina}">Abrir dashboard</a></div><div class="card power-card"><h3>Power BI Dom Bosco</h3><p>Captação e acompanhamento da Escola.</p><a target="_blank" href="${p.domBosco}">Abrir dashboard</a></div><div class="card power-card"><h3>Ranking Call Center</h3><p>Ranking de matrículas do call center.</p><a target="_blank" href="${p.callCenter}">Abrir dashboard</a></div></div>`; }
-
-function renderTable(collection, columns, title){
-  const rows=data[collection]||[];
-  content.innerHTML = `<div class="section-title"><h2>${title}</h2><span>${rows.length} registros</span></div><div class="table-wrap"><table><thead><tr>${columns.map(c=>`<th>${c.label}</th>`).join("")}<th>Ação</th></tr></thead><tbody>${rows.map((r,i)=>`<tr>${columns.map(c=>`<td>${cell(collection,i,c,r[c.key])}</td>`).join("")}<td><button class="delete-row" data-del="${collection}" data-row="${i}">Excluir</button></td></tr>`).join("")}</tbody></table></div>`;
-}
-function cell(collection,i,c,value){
-  if(c.type==="textarea") return textarea(value,[collection,i,c.key]);
-  if(c.type==="status") return select(value,[collection,i,c.key],STATUS);
-  if(c.type==="area") return select(value,[collection,i,c.key],AREAS);
-  if(c.type==="number") return editable(value,[collection,i,c.key],"number");
-  if(c.type==="date") return editable(value,[collection,i,c.key],"date");
-  return editable(value,[collection,i,c.key]);
-}
-const col = {
-  calendario:[{key:"periodo",label:"Período"},{key:"instituicao",label:"Instituição"},{key:"tema",label:"Tema"},{key:"descricao",label:"Descrição",type:"textarea"},{key:"canais",label:"Canais"},{key:"responsavel",label:"Responsável"},{key:"prazo",label:"Prazo",type:"date"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}],
-  acoesInternas:[{key:"data",label:"Data",type:"date"},{key:"area",label:"Área",type:"area"},{key:"acao",label:"Ação/Tarefa"},{key:"responsavel",label:"Responsável"},{key:"prazo",label:"Prazo",type:"date"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}],
-  acoesExternas:[{key:"data",label:"Data",type:"date"},{key:"area",label:"Área",type:"area"},{key:"acao",label:"Ação/Tarefa"},{key:"responsavel",label:"Responsável"},{key:"prazo",label:"Prazo",type:"date"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}],
-  eventos:[{key:"data",label:"Data",type:"date"},{key:"evento",label:"Evento"},{key:"negocio",label:"Negócio",type:"area"},{key:"responsavel",label:"Responsável"},{key:"leads",label:"Leads",type:"number"},{key:"custo",label:"Custo"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}],
-  reunioes:[{key:"data",label:"Data",type:"date"},{key:"bloco",label:"Bloco"},{key:"responsavel",label:"Responsável"},{key:"tarefa",label:"Tarefa/Demanda",type:"textarea"},{key:"prazo",label:"Prazo",type:"date"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}],
-  negocio:[{key:"area",label:"Área",type:"area"},{key:"indicador",label:"Indicador"},{key:"valor",label:"Valor"},{key:"meta",label:"Meta"},{key:"responsavel",label:"Responsável"},{key:"status",label:"Status",type:"status"},{key:"observacoes",label:"Observações",type:"textarea"}]
-};
-function render(){ buildNav(); setHeader(); if(currentPage==="home") return renderHome(); if(currentPage==="metas") { content.innerHTML=powerCards()+`<div class="notice" style="margin-top:16px">Use a planilha-base para alimentar metas e links. Os botões acima já estão cadastrados no <code>js/config.js</code>.</div>`; return; } const map={"calendario":"calendario","acoes-internas":"acoesInternas","acoes-externas":"acoesExternas","eventos":"eventos","reunioes":"reunioes","dom-bosco":"negocio","undb":"negocio","pos":"negocio","medicina":"negocio"}; const collection=map[currentPage]||"calendario"; renderTable(collection,col[collection], pages.find(p=>p.id===currentPage).title); }
-
-function addRow(){ const map={"calendario":"calendario","acoes-internas":"acoesInternas","acoes-externas":"acoesExternas","eventos":"eventos","reunioes":"reunioes","dom-bosco":"negocio","undb":"negocio","pos":"negocio","medicina":"negocio"}; const collection=map[currentPage]; if(!collection) return; const row={}; col[collection].forEach(c=> row[c.key]= c.type==="status"?"Planejado":""); data[collection].push(row); render(); }
-
-document.addEventListener("input", e=>{ const el=e.target; if(!el.dataset.collection) return; data[el.dataset.collection][Number(el.dataset.row)][el.dataset.key]=el.value; });
-document.addEventListener("change", e=>{ const el=e.target; if(!el.dataset.collection) return; data[el.dataset.collection][Number(el.dataset.row)][el.dataset.key]=el.value; });
-document.addEventListener("click", e=>{ if(e.target.dataset.del){ data[e.target.dataset.del].splice(Number(e.target.dataset.row),1); render(); }});
-saveBtn.onclick=saveData; resetBtn.onclick=resetData; addRowBtn.onclick=addRow; window.addEventListener("hashchange",()=>{ currentPage=location.hash.replace("#","")||"home"; render(); });
-render();
+const labels={periodo:'Período',instituicoes:'Instituições',tema:'Tema',descricao:'Descrição',canais:'Canais',responsavel:'Responsável',status:'Status',totalLeads:'Total Leads',leadsUNDB:'Leads UNDB',leadsDB:'Leads DB',leadsPOS:'Leads Pós',investimento:'Investimento',observacoes:'Observações',data:'Data',evento:'Evento',negocio:'Negócio',cpl:'CPL',bloco:'Bloco',tarefa:'Tarefa/Demanda',prazo:'Prazo'};
+let state=getDefaultState();
+function getDefaultState(){return {home:[
+ {titulo:'Matrículas 2026.2 UNDB',valor:'--',fonte:'Fonte: RM / Power BI UNDB',descricao:'Graduação UNDB',tipo:'primary'},
+ {titulo:'Matrículas Dom Bosco 2026',valor:'--',fonte:'Fonte: RM / Power BI Escola',descricao:'Escola Dom Bosco',tipo:'primary'},
+ {titulo:'Matrículas Medicina 2026.2',valor:'--',fonte:'Fonte: RM / Power BI Medicina',descricao:'Medicina',tipo:'primary'},
+ {titulo:'Inscritos no vestibular de Med',valor:'--',fonte:'Processo seletivo tradicional',descricao:'Vestibular Medicina',tipo:'normal'},
+ {titulo:'Inscritos ENEM Med',valor:'--',fonte:'Entrada via ENEM',descricao:'Medicina ENEM',tipo:'normal'},
+ {titulo:'Inscritos Transferência Externa Med',valor:'--',fonte:'Transferência externa Medicina',descricao:'Transferência Medicina',tipo:'normal'}],
+ calendario:[row('Julho','UNDB; Medicina','Clínica de Férias','Experiência prática para acadêmicos da saúde','Instagram, Google, WhatsApp','Marketing + Comercial','Planejado'),row('Agosto','Dom Bosco','Campanha Matrícula 2026','Abertura da campanha de captação','Meta, Google, WhatsApp','Ilana','Em andamento')],
+ internas:[row('Julho','Grupo Dom Bosco','Alinhamento comercial','Ação interna de acompanhamento das metas','Reunião, WhatsApp','Nathalia','Planejado')],
+ externas:[row('Junho','UNDB; Dom Bosco; Pós','Ação externa captação','Captação de leads em evento externo','Evento externo, QR Code, WhatsApp','Marketing','Em andamento')],
+ domBosco:[row('Agosto','Dom Bosco','Reserva de Vagas','Acompanhamento da campanha de reserva','WhatsApp, Meta, Google','Ilana','Planejado')],
+ undb:[row('Julho','UNDB','Graduação 2026.2','Acompanhamento dos cursos de graduação','Google, Meta, WhatsApp','Allyson','Planejado')],
+ pos:[row('Julho','Pós-UNDB','Semana da Especialização','Captação para cursos de Pós-Graduação','Instagram, WhatsApp','Marketing + Pós','Planejado')],
+ medicina:[row('Julho','Medicina','Processos Seletivos Medicina','Acompanhamento de vestibular, ENEM e transferência externa','Power BI, WhatsApp, Google','Allyson','Em andamento')],
+ eventos:[{data:'2026-07-01',evento:'Clínica de Férias',negocio:'UNDB',responsavel:'Marketing',status:'Planejado',leadsDB:'0',leadsUNDB:'0',leadsPOS:'0',investimento:'0',cpl:'0',observacoes:''}],
+ reunioes:[{data:'2026-07-06',bloco:'Dom Bosco - Ilana',responsavel:'Ilana',tarefa:'Atualizar status da captação da Escola',prazo:'2026-07-10',status:'Planejado',observacoes:''},{data:'2026-07-06',bloco:'UNDB e Medicina - Allyson',responsavel:'Allyson',tarefa:'Validar inscritos e matrículas de Medicina',prazo:'2026-07-10',status:'Planejado',observacoes:''},{data:'2026-07-06',bloco:'Ações - Marketing',responsavel:'Rafaela',tarefa:'Atualizar calendário de ações internas e externas',prazo:'2026-07-10',status:'Planejado',observacoes:''}],
+ config: JSON.parse(JSON.stringify(window.HUB_CONFIG||{csv:{},powerbi:{}}))};}
+function row(periodo,instituicoes,tema,descricao,canais,responsavel,status){return {periodo,instituicoes,tema,descricao,canais,responsavel,status,totalLeads:'0',leadsUNDB:'0',leadsDB:'0',leadsPOS:'0',investimento:'0',observacoes:''}}
+function load(){try{const saved=localStorage.getItem(STORAGE_KEY); if(saved) state={...state,...JSON.parse(saved)};}catch(e){console.warn(e)}}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); toast('Alterações salvas.');}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function initMenu(){const el=document.getElementById('menu');el.innerHTML='';menu.forEach(([id,icon,title])=>{const b=document.createElement('button');b.innerHTML=`<span>${icon}</span>${title}`;b.dataset.view=id;b.onclick=()=>navigate(id);el.appendChild(b)})}
+function navigate(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+id).classList.add('active');document.querySelectorAll('.menu button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));const item=menu.find(m=>m[0]===id);document.getElementById('pageTitle').textContent=item[2];document.getElementById('pageSubtitle').textContent=item[3];location.hash=id;}
+function renderHome(){const v=document.getElementById('view-home');v.innerHTML=`<div class="hero"><h2>Indicadores principais</h2><p>Home limpa com os principais números comerciais por negócio. Todos os campos são editáveis.</p></div><div class="grid kpi-grid" id="homeKpis"></div><div class="panel"><div class="panel-head"><div><h2>Editar indicadores da Home</h2><p>Edite título, número, fonte e descrição.</p></div><button class="btn add-home">+ Novo indicador</button></div><div class="table-wrap"><table id="homeTable"></table></div></div>`;const k=document.getElementById('homeKpis');state.home.forEach(c=>{k.insertAdjacentHTML('beforeend',`<div class="kpi ${c.tipo==='primary'?'primary':''}"><label>${escapeHtml(c.titulo)}</label><div class="value">${escapeHtml(c.valor)}</div><small>${escapeHtml(c.fonte)}</small></div>`)});renderEditableTable('homeTable','home',['titulo','valor','fonte','descricao','tipo']);v.querySelector('.add-home').onclick=()=>{state.home.push({titulo:'Novo indicador',valor:'0',fonte:'Fonte',descricao:'Descrição',tipo:'normal'});renderAll();}}
+function renderEditableTable(tableId,key,cols){const table=document.getElementById(tableId);table.innerHTML='<thead><tr>'+cols.map(c=>`<th>${labels[c]||c}</th>`).join('')+'<th>Ações</th></tr></thead><tbody></tbody>';const tb=table.querySelector('tbody');state[key].forEach((item,i)=>{const tr=document.createElement('tr');cols.forEach(c=>{const td=document.createElement('td');td.appendChild(inputFor(key,i,c,item[c]??''));tr.appendChild(td)});const td=document.createElement('td');const del=document.createElement('button');del.className='btn danger';del.textContent='Excluir';del.onclick=()=>{if(confirm('Excluir esta linha?')){state[key].splice(i,1);renderAll();}};td.appendChild(del);tr.appendChild(td);tb.appendChild(tr)})}
+function inputFor(key,i,c,value){let el;if(c==='status'){el=document.createElement('select');statusOptions.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;o.selected=s===value;el.appendChild(o)})}else if(['descricao','observacoes','tarefa'].includes(c)){el=document.createElement('textarea');el.value=value}else if(['data','prazo'].includes(c)){el=document.createElement('input');el.type='date';el.value=value}else{el=document.createElement('input');el.type='text';el.value=value}el.oninput=()=>{state[key][i][c]=el.value};return el;}
+function renderDataView(key,title,subtitle){const v=document.getElementById('view-'+key.replace(/[A-Z]/g,m=>'-'+m.toLowerCase()));const tpl=document.getElementById('tableTemplate').content.cloneNode(true);tpl.querySelector('h2').textContent=title;tpl.querySelector('p').textContent=subtitle;tpl.querySelector('table').id='table-'+key;v.innerHTML='';v.appendChild(tpl);renderEditableTable('table-'+key,key,schemas[key]);v.querySelector('.add-row').onclick=()=>{const obj={};schemas[key].forEach(c=>obj[c]=c==='status'?'Planejado':'');state[key].push(obj);renderAll();};v.querySelector('.search').oninput=(e)=>filterTable('table-'+key,e.target.value);if(['medicina','domBosco'].includes(key)){const p=key==='medicina'?state.config.powerbi.medicina:state.config.powerbi.domBosco;v.insertAdjacentHTML('afterbegin',`<div class="hero"><h2>Dashboard Power BI</h2><p>Acesse o painel completo.</p><div class="powerbi-box"><a class="btn primary" target="_blank" href="${p||'#'}">Abrir Power BI</a></div></div>`)}if(key==='undb'){v.insertAdjacentHTML('afterbegin',`<div class="hero"><h2>UNDB Graduação</h2><p>Todos os campos abaixo são editáveis, incluindo status.</p></div>`)} }
+function filterTable(id,q){q=q.toLowerCase();document.querySelectorAll(`#${id} tbody tr`).forEach(tr=>tr.style.display=tr.textContent.toLowerCase().includes(q)?'':'none')}
+function renderConfig(){const v=document.getElementById('view-config');v.innerHTML=`<div class="hero"><h2>Configurações</h2><p>Cole aqui links CSV das abas da planilha e links dos dashboards Power BI. Depois clique em Salvar.</p></div><div class="panel"><div class="panel-head"><div><h2>Links CSV da planilha</h2><p>Deixe vazio para usar edição manual/local.</p></div></div><div class="config-grid" id="csvGrid"></div></div><div class="panel"><div class="panel-head"><div><h2>Links Power BI</h2><p>Botões de acesso dos dashboards.</p></div></div><div class="config-grid" id="powerGrid"></div></div>`;const cg=v.querySelector('#csvGrid');Object.keys(state.config.csv).forEach(k=>cg.appendChild(configInput('csv',k)));const pg=v.querySelector('#powerGrid');Object.keys(state.config.powerbi).forEach(k=>pg.appendChild(configInput('powerbi',k)))}
+function configInput(group,k){const d=document.createElement('div');d.className='config-item';d.innerHTML=`<label>${k}</label>`;const inp=document.createElement('input');inp.value=state.config[group][k]||'';inp.oninput=()=>state.config[group][k]=inp.value;d.appendChild(inp);return d}
+async function loadCsvConfigured(){for(const [key,url] of Object.entries(state.config.csv||{})){if(!url) continue;try{const res=await fetch(url);const text=await res.text();const rows=parseCsv(text);if(rows.length) state[key]=rows;}catch(e){console.warn('Falha CSV',key,e)}}renderAll(false)}
+function parseCsv(text){const lines=text.trim().split(/\r?\n/);if(lines.length<2)return[];const headers=splitCsvLine(lines[0]).map(h=>h.trim());return lines.slice(1).filter(Boolean).map(line=>{const vals=splitCsvLine(line);const o={};headers.forEach((h,i)=>o[h]=vals[i]||'');return o})}
+function splitCsvLine(line){let arr=[],cur='',q=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){q=!q;continue}if(ch===','&&!q){arr.push(cur);cur='';continue}cur+=ch}arr.push(cur);return arr}
+function renderAll(loadRemote=true){renderHome();renderDataView('calendario','Calendário Comercial','Planejamento geral das campanhas e ações.');renderDataView('internas','Ações Internas','Ações internas do Grupo Dom Bosco.');renderDataView('externas','Ações Externas','Ações externas e captação em campo.');renderDataView('domBosco','Escola Dom Bosco','Indicadores, ações e acompanhamento comercial da Escola.');renderDataView('undb','UNDB Graduação','Indicadores, ações e acompanhamento comercial da graduação.');renderDataView('pos','Pós-Graduação','Indicadores, ações e acompanhamento comercial da Pós.');renderDataView('medicina','Medicina','Processos seletivos de Medicina, ENEM, transferência e vestibulares.');renderDataView('eventos','Eventos','Eventos, leads por negócio, investimento e status.');renderDataView('reunioes','Reunião Comercial','Data, bloco, responsável, tarefa, prazo, status e observações.');renderConfig(); if(loadRemote){} }
+function escapeHtml(s){return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+document.getElementById('btnSaveAll').onclick=save;document.getElementById('btnExport').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hub-inteligencia-comercial-backup.json';a.click()};document.getElementById('btnImport').onclick=()=>document.getElementById('fileImport').click();document.getElementById('fileImport').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{state=JSON.parse(r.result);save();renderAll();};r.readAsText(f)};
+load();initMenu();renderAll();navigate((location.hash||'#home').slice(1));loadCsvConfigured();

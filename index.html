@@ -3,32 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hub de Inteligência Comercial | GDB</title>
+  <title>Hub de Inteligência Comercial | Grupo Dom Bosco</title>
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
   <aside class="sidebar">
-    <div class="brand"><strong>GDB</strong><span>Hub de Inteligência Comercial</span></div>
-    <nav id="nav"></nav>
-    <div class="hint">Campos editáveis direto na página. Use “Salvar” para gravar no navegador.</div>
+    <div class="brand">
+      <div class="brand-mark">GDB</div>
+      <div><strong>Hub de Inteligência</strong><span>Comercial</span></div>
+    </div>
+    <nav id="menu" class="menu"></nav>
+    <div class="sidebar-note">
+      <strong>Dados editáveis</strong>
+      <span>As alterações ficam salvas neste navegador. Para atualização automática, publique a planilha em CSV e cole os links em <b>Configurações</b>.</span>
+    </div>
   </aside>
 
   <main class="app">
     <header class="topbar">
       <div>
-        <span class="eyebrow">Grupo Dom Bosco</span>
+        <small>Grupo Dom Bosco</small>
         <h1 id="pageTitle">Hub de Inteligência Comercial</h1>
-        <p id="pageSubtitle">Acompanhamento comercial, calendário, ações, eventos e reuniões.</p>
+        <p id="pageSubtitle">Acompanhamento comercial, ações, eventos, medicina e reuniões.</p>
       </div>
-      <div class="actions">
-        <button id="saveBtn" class="btn primary">Salvar alterações</button>
-        <button id="addRowBtn" class="btn">+ Nova linha</button>
-        <button id="resetBtn" class="btn danger">Restaurar exemplo</button>
+      <div class="top-actions">
+        <button class="btn ghost" id="btnExport">Exportar JSON</button>
+        <button class="btn" id="btnImport">Importar JSON</button>
+        <input type="file" id="fileImport" accept="application/json" hidden>
+        <button class="btn primary" id="btnSaveAll">Salvar alterações</button>
       </div>
     </header>
 
-    <section id="content"></section>
+    <section id="view-home" class="view active"></section>
+    <section id="view-calendario" class="view"></section>
+    <section id="view-internas" class="view"></section>
+    <section id="view-externas" class="view"></section>
+    <section id="view-dom-bosco" class="view"></section>
+    <section id="view-undb" class="view"></section>
+    <section id="view-pos" class="view"></section>
+    <section id="view-medicina" class="view"></section>
+    <section id="view-eventos" class="view"></section>
+    <section id="view-reunioes" class="view"></section>
+    <section id="view-config" class="view"></section>
   </main>
+
+  <template id="tableTemplate">
+    <div class="panel">
+      <div class="panel-head">
+        <div><h2></h2><p></p></div>
+        <div class="toolbar">
+          <input class="search" placeholder="Buscar..." />
+          <button class="btn add-row">+ Nova linha</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table></table></div>
+    </div>
+  </template>
 
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
